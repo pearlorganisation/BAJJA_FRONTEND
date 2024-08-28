@@ -8,6 +8,7 @@ import Register from "../pages/Authentication/Register";
 import Login from "../pages/Authentication/Login";
 import Auth from "../pages/Authentication/Auth";
 import ForgotPassword from "../pages/Authentication/ForgotPassword";
+import CreateAd from "../pages/Buyer/CreateAd/CreateAd";
 
 const routes = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
   {
     path: "/forgot",
     element: <ForgotPassword />,
+  },
+  {
+    path: "/create-ad",
+    element: <CreateAd />,
   },
 ]);
 
