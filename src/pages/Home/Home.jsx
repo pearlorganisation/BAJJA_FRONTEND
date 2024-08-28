@@ -13,6 +13,7 @@ const Home = () => {
           <div>
             <img src="banner.jpg" />
           </div>
+
           <div>
             <div>
               <img src="banner2.jpg" />

@@ -1,5 +1,3 @@
-import PhoneInput from "./PhoneInput";
-
 const Register = () => {
   return (
     <div>
@@ -23,6 +21,7 @@ const Register = () => {
             <form>
               <div>
                 <div className="mt-2">
+                  <label>First Name</label>
                   <input
                     type="text"
                     placeholder="First Name"
@@ -30,13 +29,24 @@ const Register = () => {
                   />
                 </div>
                 <div className="mt-2">
+                  <label>Last Name</label>
                   <input
                     type="text"
                     placeholder="Last Name"
                     className="w-full pl-12 pr-3 border-black py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   />
                 </div>
+
                 <div className="mt-2">
+                  <label>User Name</label>
+                  <input
+                    type="text"
+                    placeholder="User name"
+                    className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                  />
+                </div>
+                <div className="mt-2">
+                  <label>Email Address</label>
                   <input
                     type="text"
                     placeholder="Email Address"
@@ -44,49 +54,11 @@ const Register = () => {
                   />
                 </div>
 
-                <div className="relative mt-2  border-black text-gray-500 rounded-xl">
-                  <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r  pr-2">
-                    <select className="text-sm bg-transparent outline-none rounded-lg h-full">
-                      <option>
-                        <svg
-                          className="w-6 h-6 text-red-500 absolute left-3 inset-y-0 my-auto"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-                          />
-                        </svg>
-                        +91
-                      </option>
-                      <option>+1</option>
-                      <option>+3</option>
-                    </select>
-                  </div>
-                  <input
-                    type="number"
-                    placeholder="Phone Number"
-                    className="w-full pl-[4.5rem] pr-3 py-2 appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-                  />
-                </div>
-
                 <div className="mt-2">
+                  <label>Password</label>
                   <input
                     type="text"
                     placeholder="Password"
-                    className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
-                  />
-                </div>
-
-                <div className="mt-2">
-                  <input
-                    type="number"
-                    placeholder="Zip Code"
                     className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                   />
                 </div>
@@ -109,3 +81,46 @@ const Register = () => {
 };
 
 export default Register;
+
+// Phone Number
+
+// <div className="relative mt-2  border-black text-gray-500 rounded-xl">
+// <div className="absolute inset-y-0 left-3 my-auto h-6 flex items-center border-r  pr-2">
+//   <select className="text-sm bg-transparent outline-none rounded-lg h-full">
+//     <option>
+//       <svg
+//         className="w-6 h-6 text-red-500 absolute left-3 inset-y-0 my-auto"
+//         xmlns="http://www.w3.org/2000/svg"
+//         fill="none"
+//         viewBox="0 0 24 24"
+//         strokeWidth={1.5}
+//         stroke="currentColor"
+//       >
+//         <path
+//           strokeLinecap="round"
+//           strokeLinejoin="round"
+//           d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+//         />
+//       </svg>
+//       +91
+//     </option>
+//     <option>+1</option>
+//     <option>+3</option>
+//   </select>
+// </div>
+// <input
+//   type="number"
+//   placeholder="Phone Number"
+//   className="w-full pl-[4.5rem] pr-3 py-2 appearance-none bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+// />
+// </div>
+
+// Zip Code
+
+// <div className="mt-2">
+// <input
+//   type="number"
+//   placeholder="Zip Code"
+//   className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+// />
+// </div>
