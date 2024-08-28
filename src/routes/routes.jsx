@@ -9,6 +9,7 @@ import Login from "../pages/Authentication/Login";
 import Auth from "../pages/Authentication/Auth";
 import ForgotPassword from "../pages/Authentication/ForgotPassword";
 import CreateAd from "../pages/Buyer/CreateAd/CreateAd";
+import ProductCategorySection from "../components/ProductCategorySection/ProductCategorySection";
 
 const routes = createBrowserRouter([
   {
@@ -53,6 +54,10 @@ const routes = createBrowserRouter([
   {
     path: "/create-ad",
     element: <CreateAd />,
+  },
+  {
+    path: "/prod-cat",
+    element: <ProductCategorySection />,
   },
 ]);
 
