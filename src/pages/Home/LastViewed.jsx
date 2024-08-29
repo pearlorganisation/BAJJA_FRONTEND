@@ -45,25 +45,25 @@ const LastViewed = () => {
   return (
     <>
       <div className="">
-        <div class="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4">
+        <div className="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4">
           {data.map((el, id) => (
-            <div class="">
+            <div className="">
               <img
-                class="w-full h-48 object-contain"
+                className="w-full h-48 object-contain"
                 src={el.img}
                 alt="Placeholder Image"
               />
 
-              <div class="p-4">
-                <div class="flex items-center">
-                  <span class="text-yellow-500">
+              <div className="p-4">
+                <div className="flex items-center">
+                  <span className="text-yellow-500">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke-width="2"
                       stroke="currentColor"
-                      class="w-5 h-5 inline"
+                      className="w-5 h-5 inline"
                     >
                       <path
                         stroke-linecap="round"
@@ -72,16 +72,18 @@ const LastViewed = () => {
                       />
                     </svg>
                   </span>
-                  <span class="text-yellow-500 ml-1 text-sm">4.5</span>
-                  <span class="ml-2 text-gray-600 text-sm">(52,677)</span>
+                  <span className="text-yellow-500 ml-1 text-sm">4.5</span>
+                  <span className="ml-2 text-gray-600 text-sm">(52,677)</span>
                 </div>
-                <h2 class="text-gray-900 text-lg font-bold mt-2">{el.title}</h2>
-                <p class="text-gray-600 mt-2 text-sm">{el.description}</p>
-                <div class="mt-4 flex items-center">
-                  <span class="text-gray-400 line-through">
+                <h2 className="text-gray-900 text-lg font-bold mt-2">
+                  {el.title}
+                </h2>
+                <p className="text-gray-600 mt-2 text-sm">{el.description}</p>
+                <div className="mt-4 flex items-center">
+                  <span className="text-gray-400 line-through">
                     ${el.firstPrice}
                   </span>
-                  <span class="text-blue-500 text-xl font-bold ml-2">
+                  <span className="text-blue-500 text-xl font-bold ml-2">
                     ${el.DiscountedPrice}
                   </span>
                 </div>
@@ -92,7 +94,7 @@ const LastViewed = () => {
                   </div>
                   <div>
                     {" "}
-                    <button class=" w-full bg-orange-500 text-white font-semibold py-2 px-12 rounded hover:bg-orange-600">
+                    <button className=" w-full bg-orange-500 text-white font-semibold py-2 px-12 rounded hover:bg-orange-600">
                       ADD TO CART
                     </button>
                   </div>

@@ -18,6 +18,7 @@ const Home = () => {
             <div>
               <img src="banner2.jpg" />
             </div>
+
             <div>
               <img src="banner3.jpg" />
             </div>
@@ -42,6 +43,7 @@ const Home = () => {
                 <div class="p-3 bg-gray-100 rounded-full">
                   <CiTrophy />
                 </div>
+
                 <div class="text-center md:text-left">
                   <p class="text-sm font-semibold">TRUSTED DEALERS</p>
                 </div>
