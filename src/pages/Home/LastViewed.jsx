@@ -6,7 +6,7 @@ import { CiHeart } from "react-icons/ci";
 const LastViewed = () => {
   const data = [
     {
-      img: "https://s3-alpha-sig.figma.com/img/a81e/e337/d4864b5bf82a65669ff6c6b965655324?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lOZP5jTjpkc5sbIkiV6zedEr8TwrauL3FjNT5V8ak3JWMaW5KvnYOtrRnk2LapksRsLQS06AvKxmXKfZcjahh2FAsRxUqwK0l6Sa1QAhoCVDAwxtxZg2aJvnrCCk4B35kwrbwWTykYdQCouRhdCqElNQ9oZNDLXOSmYZcHWPlyVl5AUK7pTaNEWT~GtLukoF6ANjHqOxc8yuTQIH-69l0aTjDddvzEBQpRJCmQMKE2-J3HBi-nlJUvWWkro9GyS4TVUTiyviv-By-YyujaF7PW5wYiODkqf-Szb-n8JGJXdOPXDK282YvWFoXrQ3B8XtaongVksCsunkYPBqPkGlOA__",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
       description:
@@ -15,7 +15,7 @@ const LastViewed = () => {
       DiscountedPrice: "400",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/a81e/e337/d4864b5bf82a65669ff6c6b965655324?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lOZP5jTjpkc5sbIkiV6zedEr8TwrauL3FjNT5V8ak3JWMaW5KvnYOtrRnk2LapksRsLQS06AvKxmXKfZcjahh2FAsRxUqwK0l6Sa1QAhoCVDAwxtxZg2aJvnrCCk4B35kwrbwWTykYdQCouRhdCqElNQ9oZNDLXOSmYZcHWPlyVl5AUK7pTaNEWT~GtLukoF6ANjHqOxc8yuTQIH-69l0aTjDddvzEBQpRJCmQMKE2-J3HBi-nlJUvWWkro9GyS4TVUTiyviv-By-YyujaF7PW5wYiODkqf-Szb-n8JGJXdOPXDK282YvWFoXrQ3B8XtaongVksCsunkYPBqPkGlOA__",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
       description:
@@ -24,7 +24,7 @@ const LastViewed = () => {
       DiscountedPrice: "400",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/a81e/e337/d4864b5bf82a65669ff6c6b965655324?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lOZP5jTjpkc5sbIkiV6zedEr8TwrauL3FjNT5V8ak3JWMaW5KvnYOtrRnk2LapksRsLQS06AvKxmXKfZcjahh2FAsRxUqwK0l6Sa1QAhoCVDAwxtxZg2aJvnrCCk4B35kwrbwWTykYdQCouRhdCqElNQ9oZNDLXOSmYZcHWPlyVl5AUK7pTaNEWT~GtLukoF6ANjHqOxc8yuTQIH-69l0aTjDddvzEBQpRJCmQMKE2-J3HBi-nlJUvWWkro9GyS4TVUTiyviv-By-YyujaF7PW5wYiODkqf-Szb-n8JGJXdOPXDK282YvWFoXrQ3B8XtaongVksCsunkYPBqPkGlOA__",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
       description:
@@ -33,7 +33,7 @@ const LastViewed = () => {
       DiscountedPrice: "400",
     },
     {
-      img: "https://s3-alpha-sig.figma.com/img/a81e/e337/d4864b5bf82a65669ff6c6b965655324?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lOZP5jTjpkc5sbIkiV6zedEr8TwrauL3FjNT5V8ak3JWMaW5KvnYOtrRnk2LapksRsLQS06AvKxmXKfZcjahh2FAsRxUqwK0l6Sa1QAhoCVDAwxtxZg2aJvnrCCk4B35kwrbwWTykYdQCouRhdCqElNQ9oZNDLXOSmYZcHWPlyVl5AUK7pTaNEWT~GtLukoF6ANjHqOxc8yuTQIH-69l0aTjDddvzEBQpRJCmQMKE2-J3HBi-nlJUvWWkro9GyS4TVUTiyviv-By-YyujaF7PW5wYiODkqf-Szb-n8JGJXdOPXDK282YvWFoXrQ3B8XtaongVksCsunkYPBqPkGlOA__",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
       description:
@@ -44,10 +44,10 @@ const LastViewed = () => {
   ];
   return (
     <>
-      <div className="">
-        <div class="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4">
+      <div className="m-10">
+        <div class="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4 space-x-8">
           {data.map((el, id) => (
-            <div class="">
+            <div class="bg-gray-100 rounded-xl">
               <img
                 class="w-full h-48 object-contain"
                 src={el.img}

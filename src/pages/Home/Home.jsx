@@ -3,25 +3,49 @@ import { CiTrophy } from "react-icons/ci";
 import { MdOutlinePayment } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
 import LastViewed from "./LastViewed";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = ['banner.jpg', 'banner2.jpg', 'banner3.jpg'];
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); 
+
+    return () => clearInterval(interval); 
+  }, [images.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <>
       <div>
-        <div className="grid md:grid-cols-[60%_auto]  container mx-auto">
-          <div>
-            <img src="banner.jpg" />
-          </div>
 
-          <div>
-            <div>
-              <img src="banner2.jpg" />
-            </div>
-            <div>
-              <img src="banner3.jpg" />
-            </div>
+        <div className="relative w-full overflow-hidden">
+          <div
+            className="flex transition-transform duration-1000 "
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <div className="w-full h-96 flex-shrink-0" key={index}>
+                <img src={image} alt={`Slide ${index}`} className="w-full h-full  " />
+              </div>
+            ))}
+          </div>
+          <div className="absolute bottom-10 left-1/2 transform-translate-x-1/2 flex space-x-2">
+            {images.map((_, index) => (
+              <span
+                key={index}
+                className={`w-3 h-3 rounded-full cursor-pointer ${index === currentIndex ? 'bg-gray-700' : 'bg-gray-300'}`}
+                onClick={() => goToSlide(index)}
+              />
+            ))}
           </div>
         </div>
+
 
         <div>
           <div className="max-w-screen-xl mx-auto my-8 p-4 border rounded-lg">
