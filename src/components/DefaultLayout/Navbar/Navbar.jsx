@@ -317,28 +317,28 @@ const Navbar = () => {
           </div>
         </div>
         <div className="inline-flex flex-row gap-2">
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Location} alt="location" />
-            <p>Track Location</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Location</p>
           </div>
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Location} alt="location" />
-            <p>Track Order</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Order</p>
           </div>
 
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Compare} alt="location" />
-            <p>Compare</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Compare</p>
           </div>
 
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Support} alt="location" />
-            <p>Customer Support</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Customer Support</p>
           </div>
 
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Info} alt="location" />
-            <p>Need Help</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Need Help</p>
           </div>
 
         </div>

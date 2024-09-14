@@ -459,7 +459,7 @@ const ProductListing = () => {
                 {products.map((product) => (
                   <div
                     key={product.id}
-                    className="bg-white overflow-hidden cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative"
+                    className="bg-white overflow-hidden h-96 cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative"
                   >
                     <div className="w-full h-[200px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-2">
                       <img
@@ -490,11 +490,11 @@ const ProductListing = () => {
                       </div>
                       <div>
                         <h3 className="text-base text-gray-800 mt-2">
-                          {product.name}
+                          {product.name.substring(0,20)}...
                         </h3>
                         <h4 className="text-xl text-blue-700 font-bold mt-4">
                           {product.originalPrice && (
-                            <strike className="text-gray-400 ml-2 mr-2 font-medium">
+                            <strike className="text-gray-400 mr-2 font-medium">
                               {"$ " + product.originalPrice}
                             </strike>
                           )}
