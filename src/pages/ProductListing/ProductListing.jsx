@@ -39,32 +39,46 @@ const categories = [
 
 const priceRanges = [
   {
-    id: 1,
+    id: 10,
     name: "All Prices",
+    max_value: 10000,
+    min_value: 0
   },
   {
-    id: 2,
-    name: "Under $20",
+    id: 11,
+    name: "Under $50",
+    max_value: 50,
+    min_value: 2
   },
   {
-    id: 3,
+    id: 12,
     name: "$20 to $100",
+    max_value: 100,
+    min_value: 20
   },
   {
-    id: 4,
+    id: 13,
     name: "$100 to 300",
+    max_value: 300,
+    min_value: 100
   },
   {
-    id: 5,
+    id: 14,
     name: "$300 to $500",
+    max_value: 500,
+    min_value: 300
   },
   {
-    id: 6,
+    id: 15,
     name: "$500 to $1,000",
+    max_value: 1000,
+    min_value: 500
   },
   {
-    id: 7,
+    id: 16,
     name: "$1,000 to $10,000",
+    max_value: 10000,
+    min_value: 1000
   },
 ];
 const brands = [
@@ -235,7 +249,19 @@ const products = [
 ];
 
 const ProductListing = () => {
-  const [priceValue, setPriceValue] = useState(30);
+  const [priceValue, setPriceValue] = useState(200);
+
+  const priceValueChange = (e) => {
+    console.log(e.target.id);
+
+    const selectedId = e.target.id;
+    const selectedPriceRange = priceRanges.filter((item) => {
+
+
+    })
+    console.log(selectedPriceRange);
+
+  }
   return (
     <div className="bg-white">
       <div className="p-4 bg-[#F2F4F5] my-2 bg-color-black">
@@ -259,8 +285,9 @@ const ProductListing = () => {
             <div className="hidden md:block">
               {categories.map((category) => (
                 <ul key={category.id} className="flex mt-2 gap-2">
-                  <input type="radio" name="radio-1" className="radio" />
-                  <h1>{category.name}</h1>
+                  <input type="radio" name="radio-1" id={category.id} onChange={(e) => console.log(e.target.id)
+                  } className="radio" />
+                  <label htmlFor={category.id} className="cursor-pointer">{category.name}</label>
                 </ul>
               ))}
             </div>
@@ -302,8 +329,12 @@ const ProductListing = () => {
 
               {priceRanges.map((priceRange) => (
                 <ul key={priceRange.id} className="flex mt-2 gap-2">
-                  <input type="radio" name="radio-1" className="radio" />
-                  <h1>{priceRange.name}</h1>
+                  <input type="radio"
+                    name="priceRange"
+                    id={priceRange.id}
+                    checked={priceValue >= priceRange.min_value && priceValue < priceRange.max_value}
+                    className="radio" />
+                  <label htmlFor={priceRange.id} className="cursor-pointer">{priceRange.name}</label>
                 </ul>
               ))}
             </div>
@@ -424,13 +455,13 @@ const ProductListing = () => {
               <h2 className="text-xl font-bold text-gray-800 mb-12">
                 Active Filters
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {products.map((product) => (
                   <div
                     key={product.id}
                     className="bg-white overflow-hidden cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative"
                   >
-                    <div className="w-full h-[250px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-2">
+                    <div className="w-full h-[200px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-2">
                       <img
                         src="https://readymadeui.com/images/laptop2.webp"
                         alt="laptop1"
@@ -439,7 +470,7 @@ const ProductListing = () => {
 
                       {product.tag && (
                         <div className="">
-                          <h3 className="p-2 absolute top-2 left-2 border-2 bg-[#4c7972]   text-white">
+                          <h3 className="p-2 absolute top-2 left-2 border-2 bg-[#4c7972] text-white">
                             {product.tag}
                           </h3>
                         </div>
