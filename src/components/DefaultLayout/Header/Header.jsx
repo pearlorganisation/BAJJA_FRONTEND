@@ -1,8 +1,13 @@
 import Cart from "../../../assets/Cart.png";
 import Profile from "../../../assets/Profile.png";
 import Fav from "../../../assets/Fav.png";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const selector = useSelector(state => state);
+  const navigate = useNavigate();
+  
   return (
     <div>
       <header className="flex bg-primary border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
@@ -107,14 +112,14 @@ const Header = () => {
                 <span className="relative cursor-pointer">
                   <img src={Fav} className="w-10"/>
                   <span className="absolute left-auto ml-7 top-[-3px] rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                    0
+                  {selector.favourite.length}
                   </span>
                 </span>
 
-                <span className="relative cursor-pointer">
+                <span className="relative cursor-pointer" onClick={()=>navigate("/addToCart")}>
                   <img src={Cart} className="w-10"/>
                   <span className="absolute left-auto ml-8 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                    0
+                    {selector.addToCart.length}
                   </span>
                 </span>
 

@@ -1,11 +1,12 @@
-import React from "react";
-import { RxEyeOpen } from "react-icons/rx";
+import React, { useState } from "react";
 
-import { CiHeart } from "react-icons/ci";
+import Carts from "./Carts";
 
 const LastViewed = () => {
+
   const data = [
     {
+      id: 0,
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
@@ -13,8 +14,10 @@ const LastViewed = () => {
         " Games built using the Xbox Series X|S development kit showcase unparalleled load times, visuals.",
       firstPrice: "800",
       DiscountedPrice: "400",
+      rating: 4.5
     },
     {
+      id: 1,
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
@@ -22,8 +25,10 @@ const LastViewed = () => {
         " Games built using the Xbox Series X|S development kit showcase unparalleled load times, visuals.",
       firstPrice: "800",
       DiscountedPrice: "400",
+      rating: 5
     },
     {
+      id: 2,
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
@@ -31,8 +36,10 @@ const LastViewed = () => {
         " Games built using the Xbox Series X|S development kit showcase unparalleled load times, visuals.",
       firstPrice: "800",
       DiscountedPrice: "400",
+      rating: 3.5
     },
     {
+      id: 3,
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLjCdddtP4rgcfL8flLr-UqDpUCKcV_C_MJA&s",
       title:
         "  Xbox Series S - 512GB SSD Console with Wireless Controller - EUVersion",
@@ -40,68 +47,54 @@ const LastViewed = () => {
         " Games built using the Xbox Series X|S development kit showcase unparalleled load times, visuals.",
       firstPrice: "800",
       DiscountedPrice: "400",
+      rating: 4
     },
   ];
+
+  const [time, setTime] = useState({
+    days: 16,
+    hours: 21,
+    minutes: 57,
+    secounds: 23
+  })
+  
+
+  // useEffect(() => {
+  //   let timer = setInterval(() => {
+  //     setTime(prevTime => {
+  //       const { days, hours, minutes, seconds } = prevTime;
+
+  //       // Calculate new seconds, minutes, hours, and days
+  //       const newSeconds = seconds > 0 ? seconds - 1 : 59;
+  //       const newMinutes = seconds === 0 ? (minutes > 0 ? minutes - 1 : 59) : minutes;
+  //       const newHours = minutes === 0 && seconds === 0 ? (hours > 0 ? hours - 1 : 23) : hours;
+  //       const newDays = hours === 0 && minutes === 0 && seconds === 0 ? (days > 0 ? days - 1 : days) : days;
+
+  //       return { days: newDays, hours: newHours, minutes: newMinutes, seconds: newSeconds };
+  //     });
+  //   }, 1000); 
+  //   return () => clearInterval(timer)
+
+  // }, [])
   return (
     <>
       <div className="m-10">
-        <div class="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4 space-x-8">
+        <div className="flex space-x-5 py-8 items-center">
+          <h2 className="text-2xl font-bold">Best Deals</h2>
+          <p className="text-xs">Deals ends in</p>
+          <div className="space-x-2 bg-yellow-200 px-5 py-1">
+            <span>{time.days}d</span>
+            <span>:</span>
+            <span>{time.hours}h</span>
+            <span>:</span>
+            <span>{time.minutes}m</span>
+            <span>:</span>
+            <span>{time.secounds}s</span>
+          </div>
+        </div>
+        <div className="max-w-8xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden grid md:grid-cols-4 space-x-8">
           {data.map((el, id) => (
-            <div class="bg-gray-100 rounded-xl">
-              <img
-                class="w-full h-48 object-contain"
-                src={el.img}
-                alt="Placeholder Image"
-              />
-
-              <div class="p-4">
-                <div class="flex items-center">
-                  <span class="text-yellow-500">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="2"
-                      stroke="currentColor"
-                      class="w-5 h-5 inline"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M12 4.5v15m7.5-7.5h-15"
-                      />
-                    </svg>
-                  </span>
-                  <span class="text-yellow-500 ml-1 text-sm">4.5</span>
-                  <span class="ml-2 text-gray-600 text-sm">(52,677)</span>
-                </div>
-                <h2 class="text-gray-900 text-lg font-bold mt-2">{el.title}</h2>
-                <p class="text-gray-600 mt-2 text-sm">{el.description}</p>
-                <div class="mt-4 flex items-center">
-                  <span class="text-gray-400 line-through">
-                    ${el.firstPrice}
-                  </span>
-                  <span class="text-blue-500 text-xl font-bold ml-2">
-                    ${el.DiscountedPrice}
-                  </span>
-                </div>
-
-                <div className="flex  justify-around items-center ">
-                  <div className="">
-                    <CiHeart size={30} />
-                  </div>
-                  <div>
-                    {" "}
-                    <button class=" w-full bg-orange-500 text-white font-semibold py-2 px-12 rounded hover:bg-orange-600">
-                      ADD TO CART
-                    </button>
-                  </div>
-                  <div className="">
-                    <RxEyeOpen size={30} />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Carts el={el} />
           ))}
         </div>
       </div>

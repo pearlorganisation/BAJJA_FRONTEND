@@ -10,6 +10,7 @@ import Auth from "../pages/Authentication/Auth";
 import ForgotPassword from "../pages/Authentication/ForgotPassword";
 import CreateAd from "../pages/Buyer/CreateAd/CreateAd";
 import ProductCategorySection from "../components/ProductCategorySection/ProductCategorySection";
+import AddToCart from "../pages/Home/AddToCart/AddToCart";
 
 const routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
         path: "product",
         element: <ProductListing />,
       },
+      {
+        path:"addToCart",
+        element:<AddToCart/>
+      }
     ],
   },
   {

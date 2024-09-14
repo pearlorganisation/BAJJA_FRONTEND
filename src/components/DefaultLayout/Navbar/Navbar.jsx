@@ -6,29 +6,34 @@ import Location from "../../../assets/Location.png";
 import { useState } from "react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCategory, setIsCategory] = useState(false);
+  const [isServies, setIsServies] = useState(false);
+  const [isAutomotive, setIsAutomotive] = useState(false);
 
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const toggleAllCategoryDropdown = () => {
+    setIsCategory(!isCategory);
   };
+
   return (
     <div className="m-2 mx-10 flex items-center justify-between">
       <div className="flex items-center justify-between space-x-8">
         <div>
-          <div className="inline-flex">
+          <div className="inline-flex"
+            onMouseLeave={toggleAllCategoryDropdown}
+          >
             <button
               id="hs-dropdown-with-dividers"
               type="button"
-              className="py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-orange-500 focus:text-white disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide"
+              className={`py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 ${isCategory ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
               aria-haspopup="menu"
-              aria-expanded={isOpen}
+              aria-expanded={isCategory}
               aria-label="Dropdown"
-              onClick={toggleDropdown}
+              // onClick={toggleAllCategoryDropdown}
+              onMouseEnter={toggleAllCategoryDropdown}
             >
               All Category
               <svg
-                className={`ml-2 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+                className={`ml-2 transition-transform ${isCategory ? 'rotate-180' : ''}`}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -44,7 +49,7 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`transition-[opacity,margin] duration-300 ${isOpen ? 'opacity-100' : 'opacity-0'} ${isOpen ? 'block' : 'hidden'} absolute z-10 min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`transition-[opacity,margin] duration-300 ${isCategory ? 'opacity-100' : 'opacity-0'} ${isCategory ? 'block' : 'hidden'} absolute z-10 min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -99,18 +104,23 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="hs-dropdown relative inline-flex ml-2">
+          <div className="hs-dropdown relative inline-flex ml-2"
+            onMouseLeave={() => setIsServies(false)}
+          >
             <button
               id="hs-dropdown-with-dividers"
               type="button"
-              className="hs-dropdown-toggle py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-orange-500 focus:text-white disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide"
+              className={`py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 ${isServies ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
               aria-haspopup="menu"
-              aria-expanded="false"
+              aria-expanded={isServies}
               aria-label="Dropdown"
+              // onClick={toggleAllServiesDropdown}
+              onMouseEnter={() => setIsServies(true)}
+
             >
               All Services
               <svg
-                className="hs-dropdown-open:rotate-180 size-4"
+                className={`ml-2 transition-transform ${isServies ? 'rotate-180' : ''}`}
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -126,7 +136,7 @@ const Navbar = () => {
             </button>
 
             <div
-              className="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-2 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700"
+              className={`transition-[opacity,margin] duration-300 ${isServies ? 'opacity-100' : 'opacity-0'} ${isServies ? 'block' : 'hidden'} absolute z-10 min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-12 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -136,25 +146,71 @@ const Navbar = () => {
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#"
                 >
-                  Newsletter
+                  Home Services
                 </a>
                 <a
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#"
                 >
-                  Purchases
+                  Professional Services
                 </a>
                 <a
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#"
                 >
-                  Downloads
+                  Health and Wellness Services
                 </a>
                 <a
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#"
                 >
-                  Team Account
+                  Personal Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Educational Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Travel & Hospitality Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                  onMouseEnter={() => setIsAutomotive(true)}
+                  onMouseLeave={() => setIsAutomotive(false)}
+                >
+                  Automotive Services
+                  <svg fill="#000000" height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve" className={`${isAutomotive ? 'opacity-100' : 'opacity-0'} ml-5`}>
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path id="XMLID_222_" d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001 c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213 C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606 C255,161.018,253.42,157.202,250.606,154.389z">
+                      </path>
+                    </g>
+                  </svg>
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Entertainment Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Real Esate Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Financial Services
                 </a>
               </div>
               <div className="py-2 first:pt-0 last:pb-0">
@@ -180,6 +236,84 @@ const Navbar = () => {
                 </a>
               </div>
             </div>
+            <div
+              className={`ml-60 transition-[opacity,margin] duration-300 ${isAutomotive ? 'opacity-100' : 'opacity-0'} ${isAutomotive ? 'block' : 'hidden'} absolute z-10 min-w-60 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="hs-dropdown-with-dividers"
+              onMouseEnter={() => setIsAutomotive(true)}
+              onMouseLeave={() => setIsAutomotive(false)}
+            >
+              <div className="py-2 first:pt-0 last:pb-0">
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  All
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Automotive Repair & Maintenance
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Car Rental
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Car Wash & Detailing
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Towing Services
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Vehicle Inspection
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Auto Insurance
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Vehicle Registration
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Roadside Assistance
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Driving Schools
+                </a>
+                <a
+                  className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
+                  href="#"
+                >
+                  Parking Services
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
         <div className="inline-flex flex-row gap-2">
