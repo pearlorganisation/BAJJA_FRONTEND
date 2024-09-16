@@ -49,7 +49,7 @@ const Carts = ({ el }) => {
                                 d="M12 4.5v15m7.5-7.5h-15"
                             />
                         </svg> */}
-                        
+
                         {Array.from({ length: 5 }, (_, i) => (
                             <span key={i} className={`text-2xl ${i < Math.floor(el.rating) ? 'text-yellow-600' : (i === Math.floor(el.rating) && el.rating % 1 >= 0.5) ? 'relative text-yellow-600 before:content-["★"] before:absolute before:inset-0  before:w-1/2 before:left-0 before:overflow-hidden before:text-gray-300' : 'text-gray-300'}`}>★</span>
                         ))}

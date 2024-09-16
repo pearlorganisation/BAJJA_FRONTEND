@@ -1,0 +1,27 @@
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: rgb(255, 123, 0) !important;
+    color: orange !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50% !important;
+    z-index: 1000;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 24px !important;
+    color: rgb(85, 57, 4) !important;
+}
+
+
+.swiper-button-next {
+    right: 5px !important;
+}
+
+.swiper-button-prev {
+    left: 5px !important;
+}

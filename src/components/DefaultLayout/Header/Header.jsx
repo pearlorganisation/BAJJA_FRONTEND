@@ -3,18 +3,30 @@ import Profile from "../../../assets/Profile.png";
 import Fav from "../../../assets/Fav.png";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { Link, NavLink } from "react-router-dom";
+import { useLocation } from "react-router";
 
 const Header = () => {
   const selector = useSelector(state => state);
   const navigate = useNavigate();
+  const location = useLocation();
+  let bg = "primary"
+  switch(location.pathname){
+    case "/services":
+       bg = "orange-400";
+       break;
+    case "/categories":
+      bg = "yellow-400"
+      break;    
+  }
   
   return (
     <div>
-      <header className="flex bg-primary border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50">
+      <header className={`flex bg-${bg} border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
         <div className="flex flex-wrap items-center justify-between lg:gap-y-2 gap-4 w-full">
-          <a href="javascript:void(0)">
+          <Link to="/">
             <h1>LOGO</h1>
-          </a>
+          </Link>
           <div className="flex items-center justify-between gap-20">
             <div
               id="collapseMenu"
@@ -51,36 +63,50 @@ const Header = () => {
                   </a>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <a
-                    href="javascript:void(0)"
-                    className="text-[#007bff] hover:text-[#007bff] text-[15px] block font-semibold"
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      `text-[#333] hover:text-[#007bff] text-[15px] block ${
+                        isActive ? "font-bold text-blue-800" : "font-semibold"
+                      }`
+                    }
                   >
                     Home
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <a
-                    href="javascript:void(0)"
-                    className="text-[#333] hover:text-[#007bff] text-[15px] block font-semibold"
+                  <NavLink to="/categories"
+                        className={({ isActive }) =>
+                          `text-[#333] hover:text-[#007bff] text-[15px] block ${
+                            isActive ? "font-bold text-blue-500" : "font-semibold"
+                          }`
+                        }
                   >
                     Categories
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <a
-                    href="javascript:void(0)"
-                    className="text-[#333] hover:text-[#007bff] text-[15px] block font-semibold"
+                  <NavLink to="/services"
+                    className={({ isActive }) =>
+                      `text-[#333] hover:text-[#007bff] text-[15px] block ${
+                        isActive ? "font-bold text-blue-500" : "font-semibold"
+                      }`
+                    }
                   >
                     Services
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="max-lg:border-b max-lg:py-3 px-3">
-                  <a
+                  <NavLink to="/create-ad"
                     href="javascript:void(0)"
-                    className="text-[#333] hover:text-[#007bff] text-[15px] block font-semibold"
+                    className={({ isActive }) =>
+                      `text-[#333] hover:text-[#007bff] text-[15px] block ${
+                        isActive ? "font-bold text-blue-500" : "font-semibold"
+                      }`
+                    }
                   >
                     Post an Ad
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>

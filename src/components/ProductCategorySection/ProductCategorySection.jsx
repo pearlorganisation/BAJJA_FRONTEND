@@ -1,149 +1,70 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import ArrowRight from "../../assets/ArrowRight.png";
+import { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import ArrowRight from '../../assets/ArrowRight.png';
+import ArrowLeft from '../../assets/ArrowLeft.png';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './ProductCategorySection.css';
 
 const products = [
-  {
-    id: 1,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 2,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 3,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 4,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 5,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 6,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 7,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 8,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 9,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 10,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
+  { id: 1, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 2, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 3, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 4, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 5, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 6, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 7, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 8, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 9, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
+  { id: 10, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
 ];
 
-const ProductCategorySection = () => {
+const ProductCategorySection = ({swiperWidth,showItem, margin}) => {
+  const swiper = useRef(null)
   return (
-    <div>
-      <div className="w-[60px] h-[60px] flex rounded-full bg-black absolute top-16 left-4">
-        <img
-          src={ArrowRight}
-          className="w-[30px] h-[30px]  items-center justify-center mt-3 ml-2"
-        />
-      </div>
+    <div className="relative text-start">
+
+      {/* <div
+        className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-black absolute top-1/2 left-4 z-10 cursor-pointer transform -translate-y-1/2"
+       
+      >
+        <img src={ArrowLeft} className="w-[30px] h-[30px]" alt="Previous" />
+      </div> */}
+
       <Swiper
-        spaceBetween={50}
-        slidesPerView={5}
-        className="px-20 py-12 w-[80%]"
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        spaceBetween={10}
+        slidesPerView={showItem}
+        modules={[Navigation]}
+
+        navigation={true}
+        slidesPerGroup={1}
+
+        className={`py-5 w-[${swiperWidth}%] ml-${margin}`}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
-            <div className="bg-white mt-2 p-4 overflow-hidden cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative">
-              <div className="w-full h-[50px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-2">
+            <div className="bg-white mt-2 p-2 text-center overflow-hidden cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative">
+              <div className="w-full h-[8rem] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-0">
                 <img
-                  src="https://readymadeui.com/images/laptop2.webp"
-                  alt="laptop1"
-                  className="h-full w-full object-contain relative"
+                  src={product.image}
+                  alt={product.name}
+                  className="h-full w-full object-contain"
                 />
               </div>
-
               <h3>{product.name}</h3>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
-      <div className="w-[60px] h-[60px] rounded-full bg-black absolute right-4 top-16">
-        <img
-          src={ArrowRight}
-          className="w-[30px] h-[30px]  items-center justify-center mt-3 ml-2"
-        />
-      </div>
+
+      {/* <div
+        className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-black absolute top-1/2 right-4 z-10 cursor-pointer transform -translate-y-1/2"
+       
+      >
+        <img src={ArrowRight} className="w-[30px] h-[30px]" alt="Next" />
+      </div> */}
     </div>
   );
 };

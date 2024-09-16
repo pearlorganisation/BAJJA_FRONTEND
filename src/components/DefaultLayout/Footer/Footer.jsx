@@ -2,6 +2,7 @@ import Logo from "../../../assets/Logo.png";
 import PlayStore from "../../../assets/PlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
 import ArrowRight from "../../../assets/ArrowRight.png";
+import { Link } from "react-router-dom";
 
 const topCategories = [
   {
@@ -117,9 +118,9 @@ const Footer = () => {
             <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
               <div className="lg:col-span-1">
                 <div className="flex gap-3">
-                  <a href="javascript:void(0)">
+                  <Link to="/">
                     <img src={Logo} alt="logo" className="w-10 mb-8" />
-                  </a>
+                  </Link>
                   <h3 className="text-white text-4xl font-bold">LOGO</h3>
                 </div>
                 <h3 className="text-gray-300 text-sm mt-3">

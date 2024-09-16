@@ -12,7 +12,7 @@ export const SearchBar = () => {
           <input
             type="search"
             id="default-search"
-            className="rounded-sm block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="rounded-sm block lg:w-80 md:w-80 w-auto p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search for anything..."
             required
           />

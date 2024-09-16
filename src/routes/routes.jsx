@@ -11,6 +11,7 @@ import ForgotPassword from "../pages/Authentication/ForgotPassword";
 import CreateAd from "../pages/Buyer/CreateAd/CreateAd";
 import ProductCategorySection from "../components/ProductCategorySection/ProductCategorySection";
 import AddToCart from "../pages/Home/AddToCart/AddToCart";
+import HomePage_Categories_Services_Goods from "../pages/HomePage_Categories_Services_Goods/HomePage_Categories_Services_Goods";
 
 const routes = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const routes = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path:":type",
+        element:<HomePage_Categories_Services_Goods/>
       },
 
       {
@@ -34,6 +39,7 @@ const routes = createBrowserRouter([
         path: "product",
         element: <ProductListing />,
       },
+    
       {
         path:"addToCart",
         element:<AddToCart/>
