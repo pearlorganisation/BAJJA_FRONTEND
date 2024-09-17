@@ -10,19 +10,21 @@ const Header = () => {
   const selector = useSelector(state => state);
   const navigate = useNavigate();
   const location = useLocation();
-  let bg = "primary"
-  switch(location.pathname){
-    case "/services":
+  console.log(location.pathname);
+  
+  let bg;
+  switch(location.pathname.split("/")[1]){
+    case "services":
        bg = "orange-400";
        break;
-    case "/categories":
+    case "categories":
       bg = "yellow-400"
       break;    
   }
   
   return (
     <div>
-      <header className={`flex bg-${bg} border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
+      <header className={`flex bg-${bg?bg:"primary"} border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
         <div className="flex flex-wrap items-center justify-between lg:gap-y-2 gap-4 w-full">
           <Link to="/">
             <h1>LOGO</h1>
@@ -130,8 +132,8 @@ const Header = () => {
             </div>
 
             <div className="flex gap-x-10 gap-y-4 ml-auto">
-              <div className="flex items-center space-x-10 mr-3 px-4">
-                <span className="relative cursor-pointer">
+              <div className="flex items-center space-x-10 mr-3 px-4" >
+                <span className="relative cursor-pointer" onClick={()=>navigate("/auth")}>
                   <img src={Profile} className="w-10"/>
                 </span>
 

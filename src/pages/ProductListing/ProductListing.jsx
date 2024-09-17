@@ -8,6 +8,7 @@ import ArrowLeft from "../../assets/ArrowLeft.png";
 import { SearchBar } from "./SearchBar";
 import SortByFilter from "./SortByFilter";
 import { useLocation } from "react-router";
+import { products } from "../../../JSON Data/productsData/ProsuctsData";
 
 const categories = [
   {
@@ -57,82 +58,82 @@ const priceRanges = [
     id: 12,
     name: "$20 to $100",
     max_value: 100,
-    min_value: 20
+    min_value: 51
   },
   {
     id: 13,
     name: "$100 to 300",
     max_value: 300,
-    min_value: 100
+    min_value: 101
   },
   {
     id: 14,
     name: "$300 to $500",
     max_value: 500,
-    min_value: 300
+    min_value: 301
   },
   {
     id: 15,
     name: "$500 to $1,000",
     max_value: 1000,
-    min_value: 500
+    min_value: 501
   },
   {
     id: 16,
     name: "$1,000 to $10,000",
     max_value: 10000,
-    min_value: 1000
+    min_value: 1001
   },
 ];
-const brands = [
+const brandsData = [
   {
-    id: 1,
+    id: 21,
     isChecked: true,
     name: "Nykaa",
   },
   {
-    id: 2,
+    id: 20,
     isChecked: true,
     name: "Swiss Beauty",
   },
   {
-    id: 3,
+    id: 30,
     isChecked: true,
     name: "Kay Beauty",
   },
   {
-    id: 4,
+    id: 40,
     isChecked: true,
     name: "Himalaya",
   },
   {
-    id: 5,
+    id: 50,
     isChecked: true,
     name: "Cetaphil",
   },
   {
-    id: 6,
+    id: 60,
     isChecked: true,
     name: "Dot and Key",
   },
 
   {
-    id: 7,
+    id: 70,
     isChecked: true,
     name: "Plum",
   },
   {
-    id: 8,
+    id: 80,
     isChecked: true,
     name: "Minimalist",
   },
   {
-    id: 9,
+    id: 90,
     isChecked: true,
     name: "Nivea",
   },
   {
-    id: 10,
+    id: 100,
     isChecked: true,
     name: "Sugar",
   },
@@ -186,191 +187,73 @@ const tags = [
   },
 ];
 
-const products = [
-  {
-    id: 1,
-    tag: "New Arrival",
-    tagColor: "#aced1a",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "600",
-    stars: 5,
-    reviews: "1203",
-  },
-  {
-    id: 2,
-    tag: "Hot",
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: "Lipstck Set",
-    price: "350",
-    stars: 2,
-    reviews: "64",
-  },
-  {
-    id: 3,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: "PS 5 Slim Disc Edition",
-    price: "90",
-    stars: 5,
-    reviews: "11,236",
-    originalPrice: "500",
-  },
-  {
-    id: 4,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: "iPhone 15",
-    price: "15",
-    stars: 4,
-    reviews: "2,738",
-  },
-  {
-    id: 5,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " Ziva Purse",
-    price: "58",
-    stars: 1,
-    tag: "25% OFF",
-    reviews: "42",
-    originalPrice: "73",
-  },
-  {
-    id: 6,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "325",
-    stars: 3,
-    reviews: "2",
-  },
-  {
-    id: 7,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 8,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 9,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 10,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 11,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id:12,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 13,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 14,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 15,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 16,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 17,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 18,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 19,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-  {
-    id: 20,
-    image: "https://readymadeui.com/images/laptop2.webp",
-    name: " HP Polycarbonate Laptop 15S, AMD, 15.6-IInch (39.6 Cm)",
-    price: "136",
-    stars: 5,
-    reviews: "755",
-  },
-];
-
 const ProductListing = () => {
   const [priceValue, setPriceValue] = useState(200);
+  const [selectedRange, setSelectedRange] = useState([priceRanges[0]]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [selectedTagIds, setSelectedTagIds] = useState([]);
+
+  const [brands, setBrands] = useState(brandsData);
+  const itemsPerPage = 20;
+
   const location = useLocation();
   const path = location.pathname.split("/")[1];
-  
-  const priceValueChange = (e) => {
-    console.log(e.target.id);
-
-    const selectedId = e.target.id;
-    const selectedPriceRange = priceRanges.filter((item) => {
 
 
-    })
-    console.log(selectedPriceRange);
+  const handleRangeChange = (e) => {
+    const newValue = parseInt(e.target.value, 10);
+    setPriceValue(newValue);
+    let newSelectedRange;
+    if (newValue === 0 || newValue === 10000) {
+      newSelectedRange = [priceRanges[0]];
+    } else {
+      newSelectedRange = priceRanges.filter(
+        (range) => newValue >= range.min_value && newValue <= range.max_value
+      );
+    }
+    setSelectedRange(newSelectedRange);
+  };
 
-  }
+  const handleRangeSelect = (range) => {
+    setSelectedRange(Array.of(range));
+    setPriceValue(range.max_value);
+  };
+
+  const startIndex = currentPage * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const productsData = products.slice(startIndex, endIndex);
+
+  const handleNext = () => {
+    if (endIndex < products.length) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (startIndex > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleBrandsStatus = (e) => {
+    const { id, checked } = e.target;
+    const updatedBrands = brands.map(brand =>
+      brand.id === parseInt(id, 10)
+        ? { ...brand, isChecked: !brand.isChecked }
+        : brand
+    );
+    setBrands(updatedBrands);
+  };
+
+  const handleTagClick = (id) => {
+
+    setSelectedTagIds((prevSelectedTagIds) =>
+      prevSelectedTagIds.includes(id)
+        ? prevSelectedTagIds.filter(tagId => tagId !== id)
+        : [...prevSelectedTagIds, id]
+    );
+  };
+
   return (
     <div className="bg-white">
       <div className="p-4 bg-[#F2F4F5] my-2 bg-color-black">
@@ -410,18 +293,17 @@ const ProductListing = () => {
               />
             </div>
 
+            {/* Price Range Filter */}
+
             <div className="hidden md:block">
               <div>
-                <label
-                  htmlFor="price"
-                  className="opacity-70 block text-black dark:text-white"
-                >
+                <label htmlFor="price" className="opacity-70 block text-black dark:text-white">
                   <div className="w-full flex justify-between items-center">
                     <p>Max Price</p>
                     <p className="font-bold text-xl">$ {priceValue}</p>
                   </div>
                 </label>
-                <div className=" bg-gray-100  rounded-full p-2 flex items-center justify-center ">
+                <div className="bg-gray-100 rounded-full p-2 flex items-center justify-center">
                   <input
                     type="range"
                     name="price"
@@ -431,18 +313,21 @@ const ProductListing = () => {
                     max="10000"
                     value={priceValue}
                     step="100"
-                    onChange={(e) => setPriceValue(e.target.value)}
+                    onChange={handleRangeChange}
                   />
                 </div>
               </div>
 
               {priceRanges.map((priceRange) => (
                 <ul key={priceRange.id} className="flex mt-2 gap-2">
-                  <input type="radio"
+                  <input
+                    type="radio"
                     name="priceRange"
                     id={priceRange.id}
-                    checked={priceValue >= priceRange.min_value && priceValue < priceRange.max_value}
-                    className="radio" />
+                    checked={selectedRange.length > 1 ? selectedRange[1].id === priceRange.id : selectedRange[0].id === priceRange.id}
+                    onChange={() => handleRangeSelect(priceRange)}
+                    className="radio"
+                  />
                   <label htmlFor={priceRange.id} className="cursor-pointer">{priceRange.name}</label>
                 </ul>
               ))}
@@ -450,56 +335,69 @@ const ProductListing = () => {
 
             <div className="divider mt-5"></div>
 
-            <div className="flex gap-2">
-              <h1 className="mt-4">POPULAR BRANDS</h1>
-              <img
-                src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
-                className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
-              />
-            </div>
+            {/* POPULAR BRANDS */}
+            <div>
+              <div className="flex gap-2">
+                <h1 className="mt-4">POPULAR BRANDS</h1>
+                <img
+                  src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+                  className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
+                />
+              </div>
 
-            <div className="hidden md:block gap-2 mt-2">
-              <div className="gap-2 grid grid-cols-1 lg:grid-cols-2 md: mt-3">
-                {brands.map((brand) => (
-                  <div key={brand.id} className="flex gap-2">
-                    <input
-                      type="checkbox"
-                      defaultChecked
-                      className="checkbox"
-                    />
-                    <h3>{brand.name}</h3>
-                  </div>
-                ))}
+              <div className="hidden md:block gap-2 mt-2">
+                <div className="gap-2 grid grid-cols-1 lg:grid-cols-2 md: mt-3">
+                  {brands.map((brand) => (
+                    <div key={brand.id} className="flex gap-2">
+                      <input
+                        type="checkbox"
+                        checked={brand.isChecked}
+                        name={brand.name}
+                        id={brand.id}
+                        className="checkbox"
+                        onChange={handleBrandsStatus}
+                      />
+                      <label htmlFor={brand.id} className="cursor-pointer">{brand.name}</label>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="divider mt-5"></div>
 
-            <div className="flex gap-2">
-              <h1 className="mt-4">POPULAR TAGS</h1>
-              <img
-                src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
-                className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
-              />
-            </div>
+            {/* POPULAR TAGS */}
 
-            <div className="hidden md:block">
-              <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3">
-                {tags.map((brand) => (
-                  <div
-                    key={brand.id}
-                    className="flex gap-2 border-2 border-gray-400 p-2 rounded-md"
-                  >
-                    <h3 className="px-1 lg:px-2 font-bold text-xs lg:text-md">
-                      {brand.name}
-                    </h3>
-                  </div>
-                ))}
+            <div>
+              <div className="flex gap-2">
+                <h1 className="mt-4">POPULAR TAGS</h1>
+                <img
+                  src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+                  className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
+                />
+              </div>
+
+              <div className="hidden md:block">
+                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3">
+                  {tags.map((brand) => (
+                    <div
+                      key={brand.id}
+                      className={`flex gap-2 border-2 p-2 rounded-md cursor-pointer ${selectedTagIds.includes(brand.id) ? 'bg-black text-white' : 'border-gray-400'
+                        }`}
+                      onClick={() => handleTagClick(brand.id)}
+                    >
+                      <h3 className="px-1 lg:px-2 font-bold text-xs lg:text-md">
+                        {brand.name}
+                      </h3>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
             <div className="p-4 border-2 border-orange-600 mt-4 w-full rounded-xl">
-              <img src={Product} alt="Minimalist" />
-
+              <div>
+                <img src={Product} alt="Minimalist" />
+              </div>
               <div className="flex items-center justify-center">
                 <div className="items-center justify-center">
                   <h3 className="font-medium lg:text-lg text-xs mt-4">
@@ -558,17 +456,17 @@ const ProductListing = () => {
         <div className="w-[75%]">
           {/* header*/}
           <div className="p-4 flex justify-between items-center">
-            <SearchBar/>
-            <SortByFilter/>
+            <SearchBar />
+            <SortByFilter />
           </div>
-
+          {/* All Products Data */}
           <div>
             <div className="font-[sans-serif] p-4 lg:max-w-7xl md:max-w-5xl max-w-lg">
               <h2 className="text-xl font-bold text-gray-800 mb-12">
                 Active Filters
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                {products.map((product) => (
+                {productsData.map((product) => (
                   <div
                     key={product.id}
                     className="bg-white w-[17rem] overflow-hidden h-94 cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative"
@@ -591,9 +489,9 @@ const ProductListing = () => {
 
                     <div className="p-6">
                       <div className="flex space-x-1.5 mt-4">
-                
-                         {Array.from({ length: 5 }, (_, i) => (
-                            <span key={i} className={`text-2xl ${i < Math.floor(product.stars) ? 'text-yellow-600' : (i === Math.floor(product.stars) && product.stars % 1 >= 0.5) ? 'relative text-yellow-600 before:content-["★"] before:absolute before:inset-0  before:w-1/2 before:left-0 before:overflow-hidden before:text-gray-300' : 'text-gray-300'}`}>★</span>
+
+                        {Array.from({ length: 5 }, (_, i) => (
+                          <span key={i} className={`text-2xl ${i < Math.floor(product.stars) ? 'text-yellow-600' : (i === Math.floor(product.stars) && product.stars % 1 >= 0.5) ? 'relative text-yellow-600 before:content-["★"] before:absolute before:inset-0  before:w-1/2 before:left-0 before:overflow-hidden before:text-gray-300' : 'text-gray-300'}`}>★</span>
                         ))}
                         <p className="text-base text-gray-800 !ml-2">
                           {product.reviews}
@@ -601,7 +499,7 @@ const ProductListing = () => {
                       </div>
                       <div>
                         <h3 className="text-base text-gray-800 mt-2">
-                          {product.name.substring(0,20)}...
+                          {product.name.substring(0, 20)}...
                         </h3>
                         <h4 className="text-xl text-blue-700 font-bold mt-4">
                           {product.originalPrice && (
@@ -618,38 +516,44 @@ const ProductListing = () => {
               </div>
             </div>
           </div>
+          {/* Pagination */}
 
-          <div className="mt-20  gap-2 flex items-center justify-center">
-            <button className="border-yellow-600 border-2 p-2 rounded-full">
-              <img src={ArrowLeft} alt="arr-left" />
+          <div className="mt-20 gap-2 flex items-center justify-center">
+            <button
+              className={`border-2 p-2 rounded-full ${startIndex === 0 ? "border-gray-600" : "border-yellow-600"}`}
+              onClick={handlePrevious}
+              disabled={startIndex === 0}
+            >
+              {/* <img src={ArrowLeft} alt="arrow-left" /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class={`bi bi-arrow-right-short ${startIndex === 0 ? "text-gray-600" : "text-yellow-600"} rotate-180`} viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+              </svg>
             </button>
-            <input
-              className="join-item btn btn-square"
-              type="radio"
-              name="options"
-              aria-label="01"
-              defaultChecked
-            />
-            <input
-              className="join-item btn btn-square"
-              type="radio"
-              name="options"
-              aria-label="02"
-            />
-            <input
-              className="join-item btn btn-square"
-              type="radio"
-              name="options"
-              aria-label="03"
-            />
-            <input
-              className="join-item btn btn-square"
-              type="radio"
-              name="options"
-              aria-label="04"
-            />
-            <button className="border-yellow-600 border-2 p-2 rounded-full">
-              <img src={ArrowRight} alt="arrow-right" />
+
+            {/* Pagination indicator buttons */}
+
+            <div className="flex gap-2">
+              {Array.from({ length: Math.ceil(products.length / itemsPerPage) }).map((_, index) => (
+                <input
+                  key={index}
+                  className="join-item btn btn-square"
+                  type="radio"
+                  name="options"
+                  aria-label={`0${index + 1}`}
+                  checked={currentPage === index}
+                  onChange={() => setCurrentPage(index)}
+                />
+              ))}
+            </div>
+            <button
+              className={`border-2 p-2 rounded-full ${endIndex >= products.length ? "border-gray-600" : "border-yellow-600"}`}
+              onClick={handleNext}
+              disabled={endIndex >= products.length}
+            >
+              {/* <img src={ArrowRight} alt="arrow-right" /> */}
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class={`bi bi-arrow-right-short ${endIndex >= products.length ? "text-gray-600" : "text-yellow-600"}`} viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
+              </svg>
             </button>
           </div>
         </div>

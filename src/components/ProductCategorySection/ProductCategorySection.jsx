@@ -41,7 +41,7 @@ const ProductCategorySection = ({swiperWidth,showItem, margin}) => {
         navigation={true}
         slidesPerGroup={1}
 
-        className={`py-5 w-[${swiperWidth}%] ml-${margin}`}
+        className={`py-5 w-[${swiperWidth}%] m-0`}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>

@@ -116,10 +116,12 @@ const Home = () => {
       <RegisterUserCarts />
       <div className="mt-10">
         <h1 className='text-center font-bold text-3xl text-gray-700'>Shop By Category</h1>
-        <ProductCategorySection showItem={5} swiperWidth={90} margin={"auto"} />
-        <ProductCategorySection showItem={5} swiperWidth={90} margin={"auto"} />
-        <div className="ml-20">
-          <ProductCategorySection showItem={3} swiperWidth={50} margin={0} />
+        <div className="mx-16">
+        <ProductCategorySection showItem={6} swiperWidth={90}/>
+        <ProductCategorySection showItem={6} swiperWidth={90}/>
+        </div>
+        <div className="ml-16">
+          <ProductCategorySection showItem={3} swiperWidth={50}/>
         </div>
         <LastCardsHome/>
       </div>

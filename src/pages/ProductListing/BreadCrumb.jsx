@@ -1,4 +1,9 @@
+import { useLocation, useParams } from "react-router";
+
 const BreadCrumb = () => {
+  const path = useLocation();
+  const {subtitle} = useParams();
+
   return (
     <div className="breadcrumbs text-sm p-4">
       <ul className="flex flex-row">
@@ -21,13 +26,13 @@ const BreadCrumb = () => {
           </a>
         </li>
         <li>
-          <a>Categories</a>
+          <a className="capitalize">{path.pathname.split("/")[1]}</a>
         </li>
         <li>
-          <a>Beauty</a>
+          <a className="capitalize">{path.pathname.split("/")[2].split("_").join(" ")}</a>
         </li>
         <li>
-          <span className="inline-flex items-center gap-2">Skin Care</span>
+          <span className="inline-flex items-center gap-2 text-primary font-bold capitalize">{path.pathname.split("/")[3].split("_").join(" ")}</span>
         </li>
       </ul>
     </div>
