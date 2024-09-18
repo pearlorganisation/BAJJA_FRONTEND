@@ -263,7 +263,7 @@ const ProductListing = () => {
       <BreadCrumb />
 
       <div className="flex justify-between">
-        <div className="w-[25%]">
+        <div className="w-[25%] hidden md:block">
           <div className="p-8">
             <div className="flex gap-8 justify-between">
               <h1 className="mt-2 mb-3">Category</h1>
@@ -346,7 +346,7 @@ const ProductListing = () => {
               </div>
 
               <div className="hidden md:block gap-2 mt-2">
-                <div className="gap-2 grid grid-cols-1 lg:grid-cols-2 md: mt-3">
+                <div className="gap-2 grid grid-cols-1 xl:grid-cols-2 md:grid-cols-1 md:mt-3">
                   {brands.map((brand) => (
                     <div key={brand.id} className="flex gap-2">
                       <input
@@ -396,15 +396,15 @@ const ProductListing = () => {
 
             <div className="p-4 border-2 border-orange-600 mt-4 w-full rounded-xl">
               <div>
-                <img src={Product} alt="Minimalist" />
+                <img src={Product} alt="Minimalist"  className="w-full"/>
               </div>
               <div className="flex items-center justify-center">
-                <div className="items-center justify-center">
-                  <h3 className="font-medium lg:text-lg text-xs mt-4">
+                <div className="flex flex-col w-full items-center justify-center">
+                  <h3 className="font-medium lg:text-xl text-xs mt-4">
                     Minimalist
                   </h3>
 
-                  <h4 className="font-bold lg:text-xl text-sm mt-5">
+                  <h4 className="font-bold lg:text-2xl text-sm mt-5">
                     FLAT 25% OFF
                   </h4>
 

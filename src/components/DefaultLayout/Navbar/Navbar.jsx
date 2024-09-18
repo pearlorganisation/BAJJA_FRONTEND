@@ -16,6 +16,7 @@ import { Personal_Services } from "../../../../JSON Data/Services/Sub_Services/P
 import { Travel_Hospitality_Services } from "../../../../JSON Data/Services/Sub_Services/Travel_Hospitality_Services";
 import { Home_Services } from "../../../../JSON Data/Services/Sub_Services/Home_Services";
 import { Link } from "react-router-dom";
+import "./Navbar.css"
 
 const Navbar = () => {
   const [isCategory, setIsCategory] = useState(false);
@@ -23,13 +24,16 @@ const Navbar = () => {
   const [serviceName, setServiceName] = useState("");
   const [isSubServices, setIsSubServices] = useState([]);
 
-  const toggleAllServicesDropdown = ()=>{
+  const toggleAllServicesDropdown = () => {
     setIsSubServices([]);
-    setIsServies(false);
+    setIsServies(!isServies);
+    setIsCategory(false);
   }
 
   const toggleAllCategoryDropdown = () => {
     setIsCategory(!isCategory);
+    setIsSubServices([]);
+    setIsServies(false);
   };
   const handleServicesData = (title) => {
     setServiceName(title)
@@ -71,10 +75,10 @@ const Navbar = () => {
   }
 
   return (
-    <div className="m-2 mx-10 flex items-center justify-between">
+    <div className="m-2 mx-10 flex items-center justify-between overflow-x-auto pb-2 custom-scrollbar">
       <div className="flex items-center justify-between space-x-8">
-        <div>
-          <div className="inline-flex"
+        <div className="flex flex-nowrap">
+          <div className="inline-flex w-48"
             onMouseLeave={toggleAllCategoryDropdown}
           >
             <button
@@ -84,7 +88,7 @@ const Navbar = () => {
               aria-haspopup="menu"
               aria-expanded={isCategory}
               aria-label="Dropdown"
-              // onClick={toggleAllCategoryDropdown}
+              onClick={toggleAllCategoryDropdown}
               onMouseEnter={toggleAllCategoryDropdown}
             >
               All Category
@@ -160,7 +164,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className="hs-dropdown relative inline-flex ml-2"
+          <div className=" inline-flex ml-2 w-48"
             onMouseLeave={toggleAllServicesDropdown}
           >
             <button
@@ -170,7 +174,7 @@ const Navbar = () => {
               aria-haspopup="menu"
               aria-expanded={isServies}
               aria-label="Dropdown"
-              // onClick={toggleAllServiesDropdown}
+              onClick={toggleAllServicesDropdown}
               onMouseEnter={() => setIsServies(true)}
 
             >
@@ -192,23 +196,23 @@ const Navbar = () => {
             </button>
 
             <div
-              className={`transition-[opacity,margin] duration-300 ${isServies ? 'opacity-100' : 'opacity-0'} ${isServies ? 'block' : 'hidden'} absolute z-10 min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-12 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`ml-[-13rem] sm:ml-0 transition-[opacity,margin] duration-300 ${isServies ? 'opacity-100' : 'opacity-0'} ${isServies ? 'block' : 'hidden'} absolute z-10 min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-12 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
             >
               <div className="py-2 first:pt-0 last:pb-0">
                 {Services.map((item, index) => (
-                  <Link 
+                  <Link
                     className="flex items-center justify-between gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                     key={index}
+                    onClick={() => handleServicesData(item.title)}
                     onMouseEnter={() => handleServicesData(item.title)}
-
                   ><span>
                       {item.name}
                     </span>
                     <svg fill="#000000" height="10px" width="10px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"
-                      // className={`${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'}`}
+                    // className={`${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'}`}
                     >
                       <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                       <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -220,8 +224,8 @@ const Navbar = () => {
                   </Link>
                 ))}
               </div>
-            
-             {/* <div className="py-2 first:pt-0 last:pb-0">
+
+              {/* <div className="py-2 first:pt-0 last:pb-0">
                 <a
                   className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                   href="#"
@@ -237,7 +241,7 @@ const Navbar = () => {
               </div> */}
             </div>
             <div
-              className={`ml-64 transition-[opacity,margin] duration-300 ${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubServices.length > 0 ? 'block' : 'hidden'} absolute z-10 min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`sm:ml-64 ml-[-2rem] transition-[opacity,margin] duration-300 ${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubServices.length > 0 ? 'block' : 'hidden'} absolute z-10 sm:min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -250,39 +254,40 @@ const Navbar = () => {
                   <Link to={`/services/${serviceName.toLocaleLowerCase()}/${item.name.toLowerCase().split(" ").join('_')}`}
                     className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                     href="#"
+                    
                   >
                     {item.name}
                   </Link>
                 ))}
               </div>
-         
+
             </div>
 
           </div>
         </div>
         <div className="inline-flex flex-row gap-2">
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[10rem]">
             <img src={Location} alt="location" />
             <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Location</p>
           </div>
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
             <img src={Location} alt="location" />
             <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Order</p>
           </div>
 
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
             <img src={Compare} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Compare</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 ">Compare</p>
           </div>
 
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Support} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Customer Support</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 w-[10rem]">Customer Support</p>
           </div>
 
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Info} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Need Help</p>
+            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 w-[10rem]">Need Help</p>
           </div>
 
         </div>

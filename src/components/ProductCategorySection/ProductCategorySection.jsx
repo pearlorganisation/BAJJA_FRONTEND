@@ -21,10 +21,11 @@ const products = [
   { id: 10, image: "https://readymadeui.com/images/laptop2.webp", name: "HP" },
 ];
 
-const ProductCategorySection = ({swiperWidth,showItem, margin}) => {
+const ProductCategorySection = ({ swiperWidth, showItem, margin }) => {
   const swiper = useRef(null)
   return (
-    <div className="relative text-start">
+    <div className="relative text-start" data-aos="fade-up"
+      data-aos-duration="1000">
 
       {/* <div
         className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-black absolute top-1/2 left-4 z-10 cursor-pointer transform -translate-y-1/2"
@@ -46,7 +47,7 @@ const ProductCategorySection = ({swiperWidth,showItem, margin}) => {
         {products.map((product) => (
           <SwiperSlide key={product.id}>
             <div className="bg-white mt-2 p-2 text-center overflow-hidden cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative">
-              <div className="w-full h-[8rem] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-0">
+              <div className="w-full md:h-20  overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-0">
                 <img
                   src={product.image}
                   alt={product.name}

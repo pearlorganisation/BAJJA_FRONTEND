@@ -2,10 +2,9 @@ import { useLocation, useParams } from "react-router";
 
 const BreadCrumb = () => {
   const path = useLocation();
-  const {subtitle} = useParams();
 
   return (
-    <div className="breadcrumbs text-sm p-4">
+    <div className="breadcrumbs md:text-sm text-xs md:p-4 p-1">
       <ul className="flex flex-row">
         <li>
           <a>
