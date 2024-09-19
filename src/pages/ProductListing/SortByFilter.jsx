@@ -7,7 +7,8 @@ const options = [
 const customStyles = {
   container: (provided) => ({
     ...provided,
-    width: '20%', // Ensure the container takes full width if needed
+    minwidth: '20%',
+    maxwidth: "100%"
   }),
   control: (provided) => ({
     ...provided,
@@ -18,13 +19,13 @@ const customStyles = {
   }),
   valueContainer: (provided) => ({
     ...provided,
-    height: '100%', 
+    height: '100%',
   }),
 };
 const SortByFilter = () => {
   return (
     <>
-      <Select options={options} defaultValue={options[options.length - 1]}  styles={customStyles} /> 
+      <Select className="w-full md:w-auto mx-1" options={options} defaultValue={options[options.length - 1]} styles={customStyles} />
     </>
   );
 };

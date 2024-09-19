@@ -29,9 +29,9 @@ const Home = () => {
       <div className="md:flex lg:flex">
         {/* Carousel Section */}
         <div className="relative md:w-[70%] lg:w-[70%] w-full overflow-hidden" data-aos="fade-up"
-          data-aos-duration="1000">
+          data-aos-duration="500">
           <div
-            className="flex transition-transform duration-1000 bg-gray-400"
+            className="flex transition-transform duration-500 bg-gray-400"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((image, index) => (
@@ -55,11 +55,11 @@ const Home = () => {
         {/* Static Images Section */}
         <div className="md:w-1/2 lg:w-1/2 w-full flex flex-col justify-between p-4 h-1/2" >
           <div className="flex-1 mb-4" data-aos="fade-up"
-            data-aos-duration="1000">
+            data-aos-duration="500">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQch0cfJLDLv63ba-nZq1ugxaiLUovhKCjK1w&s" alt="Static Image 1" className="w-full lg:h-60 md:h-48 h-80" />
           </div>
           <div className="flex-1" data-aos="fade-up"
-            data-aos-duration="1000">
+            data-aos-duration="700">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhwQ94aiPif4XtrdhPtfvFfP90l0bjZV1cTw&s" alt="Static Image 2" className="w-full lg:h-60 md:h-48 h-80" />
           </div>
         </div>
@@ -69,7 +69,7 @@ const Home = () => {
         <div className="max-w-screen-xl md:mx-auto mx-10 my-8 p-4 border rounded-lg">
           <div className="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0">
             <div className="flex items-center space-x-4" data-aos="fade-up"
-              data-aos-duration="1000">
+              data-aos-duration="500">
               <div className="p-3 bg-gray-100 rounded-full">
                 <CiDeliveryTruck />
               </div>
@@ -83,7 +83,7 @@ const Home = () => {
             <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
             <div className="flex items-center space-x-4" data-aos="fade-up"
-              data-aos-duration="1000">
+              data-aos-duration="500">
               <div className="p-3 bg-gray-100 rounded-full">
                 <CiTrophy />
               </div>
@@ -97,7 +97,7 @@ const Home = () => {
             <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
             <div className="flex items-center space-x-4" data-aos="fade-up"
-              data-aos-duration="1000">
+              data-aos-duration="500">
               <div className="p-3 bg-gray-100 rounded-full">
                 <MdOutlinePayment />
               </div>
@@ -112,7 +112,7 @@ const Home = () => {
             <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
             <div className="flex items-center space-x-4" data-aos="fade-up"
-              data-aos-duration="1000">
+              data-aos-duration="500">
               <div className="p-3 bg-gray-100 rounded-full">
                 <BiSupport />
               </div>
@@ -131,7 +131,7 @@ const Home = () => {
       <RegisterUserCarts />
       <div className="mt-10">
         <h1 className='text-center font-bold text-3xl text-gray-700' data-aos="fade-up"
-          data-aos-duration="1000">Shop By Category</h1>
+          data-aos-duration="500">Shop By Category</h1>
         <div className="mx-16">
           <ProductCategorySection showItem={6} swiperWidth={90} />
           <ProductCategorySection showItem={6} swiperWidth={90} />

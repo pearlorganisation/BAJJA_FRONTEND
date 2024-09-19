@@ -192,6 +192,12 @@ const ProductListing = () => {
   const [selectedRange, setSelectedRange] = useState([priceRanges[0]]);
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedTagIds, setSelectedTagIds] = useState([]);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+
+  const toggleFilterModal = () => {
+    setIsFilterOpen(!isFilterOpen);
+  };
 
   const [brands, setBrands] = useState(brandsData);
   const itemsPerPage = 20;
@@ -265,8 +271,12 @@ const ProductListing = () => {
       <div className="flex justify-between">
         <div className="w-[25%] hidden md:block">
           <div className="p-8">
-            <div className="flex gap-8 justify-between">
-              <h1 className="mt-2 mb-3">Category</h1>
+
+            {/* Category */}
+
+            <div className="flex gap-8 justify-between" data-aos="fade-up"
+              data-aos-duration="500">
+              <h1 className="mt-2 mb-3 text-sm lg:text-base">Category</h1>
 
               <img
                 src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
@@ -274,33 +284,38 @@ const ProductListing = () => {
               />
             </div>
 
-            <div className="hidden md:block">
+            <div className="hidden md:block" data-aos="fade-up"
+              data-aos-duration="500">
               {categories.map((category) => (
-                <ul key={category.id} className="flex mt-2 gap-2">
+                <ul key={category.id} className="flex mt-2 gap-2 items-center">
                   <input type="radio" name="radio-1" id={category.id} onChange={(e) => console.log(e.target.id)
                   } className="radio" />
-                  <label htmlFor={category.id} className="cursor-pointer">{category.name}</label>
+                  <label htmlFor={category.id} className="cursor-pointer text-sm lg:text-base">{category.name}</label>
                 </ul>
               ))}
             </div>
-            <div className="divider"></div>
+            <div className="divider" data-aos="fade-up"
+              data-aos-duration="500"></div>
 
-            <div className="flex gap-2 justify-between">
-              <h1 className="mt-4">PRICE RANGE</h1>
+            {/* Price Range Filter */}
+
+            <div className="flex gap-2 justify-between" data-aos="fade-up"
+              data-aos-duration="500">
+              <h1 className="lg:mt-4 md:text-sm lg:text-base">PRICE RANGE</h1>
               <img
                 src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
                 className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
               />
             </div>
 
-            {/* Price Range Filter */}
 
-            <div className="hidden md:block">
+            <div className="hidden md:block" data-aos="fade-up"
+              data-aos-duration="500">
               <div>
                 <label htmlFor="price" className="opacity-70 block text-black dark:text-white">
                   <div className="w-full flex justify-between items-center">
-                    <p>Max Price</p>
-                    <p className="font-bold text-xl">$ {priceValue}</p>
+                    <p className="md:text-sm lg:text-base">Max Price</p>
+                    <p className="font-bold lg:text-xl">$ {priceValue}</p>
                   </div>
                 </label>
                 <div className="bg-gray-100 rounded-full p-2 flex items-center justify-center">
@@ -319,45 +334,48 @@ const ProductListing = () => {
               </div>
 
               {priceRanges.map((priceRange) => (
-                <ul key={priceRange.id} className="flex mt-2 gap-2">
+                <ul key={priceRange.id} className="flex mt-2 gap-2 items-center">
                   <input
                     type="radio"
                     name="priceRange"
                     id={priceRange.id}
                     checked={selectedRange.length > 1 ? selectedRange[1].id === priceRange.id : selectedRange[0].id === priceRange.id}
                     onChange={() => handleRangeSelect(priceRange)}
-                    className="radio"
+                    className="radio focus:border-none"
                   />
-                  <label htmlFor={priceRange.id} className="cursor-pointer">{priceRange.name}</label>
+                  <label htmlFor={priceRange.id} className="cursor-pointer text-sm lg:text-base">{priceRange.name}</label>
                 </ul>
               ))}
             </div>
 
-            <div className="divider mt-5"></div>
+            <div className="divider mt-5" data-aos="fade-up"
+              data-aos-duration="500"></div>
 
             {/* POPULAR BRANDS */}
-            <div>
+            <div >
               <div className="flex gap-2">
-                <h1 className="mt-4">POPULAR BRANDS</h1>
+                <h1 className="mt-4 text-sm lg:text-base" data-aos="fade-up"
+                  data-aos-duration="500">POPULAR BRANDS</h1>
                 <img
                   src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
                   className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
                 />
               </div>
 
-              <div className="hidden md:block gap-2 mt-2">
+              <div className="hidden md:block gap-2 mt-2" data-aos="fade-up"
+                data-aos-duration="500">
                 <div className="gap-2 grid grid-cols-1 xl:grid-cols-2 md:grid-cols-1 md:mt-3">
                   {brands.map((brand) => (
-                    <div key={brand.id} className="flex gap-2">
+                    <div key={brand.id} className="flex items-center gap-2">
                       <input
                         type="checkbox"
                         checked={brand.isChecked}
                         name={brand.name}
                         id={brand.id}
-                        className="checkbox"
+                        className="checkbox w-5 h-5 lg:w-6 lg:h-6"
                         onChange={handleBrandsStatus}
                       />
-                      <label htmlFor={brand.id} className="cursor-pointer">{brand.name}</label>
+                      <label htmlFor={brand.id} className="cursor-pointer lg:text-base text-sm">{brand.name}</label>
                     </div>
                   ))}
                 </div>
@@ -369,19 +387,21 @@ const ProductListing = () => {
 
             <div>
               <div className="flex gap-2">
-                <h1 className="mt-4">POPULAR TAGS</h1>
+                <h1 className="mt-4 lg:text-base text-sm" data-aos="fade-up"
+                  data-aos-duration="500">POPULAR TAGS</h1>
                 <img
                   src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
                   className="w-5 h-5 items-center justify-center mt-4 block md:hidden"
                 />
               </div>
 
-              <div className="hidden md:block">
-                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-3">
+              <div className="hidden md:block" data-aos="fade-up"
+                data-aos-duration="500">
+                <div className="gap-2 grid grid-cols-1 md:grid-cols-2 md:w-44 lg:w-auto xl:grid-cols-3 mt-3">
                   {tags.map((brand) => (
                     <div
                       key={brand.id}
-                      className={`flex gap-2 border-2 p-2 rounded-md cursor-pointer ${selectedTagIds.includes(brand.id) ? 'bg-black text-white' : 'border-gray-400'
+                      className={`flex gap-2 border-2 md:py-2 xl:p-2 rounded-md cursor-pointer ${selectedTagIds.includes(brand.id) ? 'bg-black text-white' : 'border-gray-400'
                         }`}
                       onClick={() => handleTagClick(brand.id)}
                     >
@@ -393,22 +413,27 @@ const ProductListing = () => {
                 </div>
               </div>
             </div>
-
-            <div className="p-4 border-2 border-orange-600 mt-4 w-full rounded-xl">
-              <div>
-                <img src={Product} alt="Minimalist"  className="w-full"/>
+            {/** Single Card */}
+            <div className="p-4 border-2 border-orange-600 mt-4 w-full rounded-xl" data-aos="fade-up"
+              data-aos-duration="500">
+              <div data-aos="fade-up"
+                data-aos-duration="500">
+                <img src={Product} alt="Minimalist" className="w-full" />
               </div>
               <div className="flex items-center justify-center">
                 <div className="flex flex-col w-full items-center justify-center">
-                  <h3 className="font-medium lg:text-xl text-xs mt-4">
+                  <h3 className="font-medium lg:text-xl text-xs mt-4" data-aos="fade-up"
+                    data-aos-duration="500">
                     Minimalist
                   </h3>
 
-                  <h4 className="font-bold lg:text-2xl text-sm mt-5">
+                  <h4 className="font-bold lg:text-2xl text-sm mt-5" data-aos="fade-up"
+                    data-aos-duration="500">
                     FLAT 25% OFF
                   </h4>
 
-                  <h4 className="mt-3 text-sm">
+                  <h4 className="mt-3 text-sm" data-aos="fade-up"
+                    data-aos-duration="500">
                     ONLY FOR
                     <span className="bg-yellow-400 mt-3 text-sm">
                       {" "}
@@ -418,8 +443,9 @@ const ProductListing = () => {
 
                   <button
                     type="button"
-                    className="w-full flex items-center justify-center gap-3 mt-6 px-3 py-3 bg-orange-400 text-xs md:text-base text-white font-semibold rounded-sm"
-                  >
+                    className="w-full flex items-center justify-center lg:gap-3 md:gap-1 mt-6 px-3 py-3 bg-orange-400 text-xs md:text-base text-white font-semibold rounded-sm"
+                    data-aos="fade-up"
+                    data-aos-duration="500">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="20px"
@@ -438,8 +464,9 @@ const ProductListing = () => {
 
                   <button
                     type="button"
-                    className="w-full flex items-center justify-center gap-3 mt-6 px-3 py-3 bg-white text-xs md:text-base text-orange-600 border-2 border-orange-600 font-semibold rounded-sm"
-                  >
+                    className="w-full flex items-center justify-center gap-3 mt-6 lg:px-3 px-1 py-3 bg-white text-xs md:text-base text-orange-600 border-2 border-orange-600 font-semibold rounded-sm"
+                    data-aos="fade-up"
+                    data-aos-duration="500">
                     View Details
                     <img
                       src={ArrowRight}
@@ -453,22 +480,25 @@ const ProductListing = () => {
           </div>
         </div>
 
-        <div className="w-[75%]">
+        <div className="md:w-[75%] w-full">
           {/* header*/}
-          <div className="p-4 flex justify-between items-center">
+          <div className="p-4 flex flex-wrap justify-between items-center">
             <SearchBar />
             <SortByFilter />
           </div>
           {/* All Products Data */}
           <div>
-            <div className="font-[sans-serif] p-4 lg:max-w-7xl md:max-w-5xl max-w-lg">
-              <h2 className="text-xl font-bold text-gray-800 mb-12">
+            <div className="font-[sans-serif] p-4 lg:max-w-7xl md:max-w-5xl max-w-4xl">
+              <h2 className="text-xl font-bold text-gray-800 mb-12" data-aos="fade-up"
+                data-aos-duration="600">
                 Active Filters
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-2 place-items-center lg:grid-cols-4 gap-5">
                 {productsData.map((product) => (
                   <div
                     key={product.id}
+                    data-aos="fade-up"
+                    data-aos-duration="500"
                     className="bg-white w-[17rem] overflow-hidden h-94 cursor-pointer border-2 border-gray-400 rounded-lg hover:shadow-lg transition-all relative"
                   >
                     <div className="w-full h-[200px] overflow-hidden mx-auto aspect-w-16 aspect-h-8 p-2">
@@ -521,7 +551,11 @@ const ProductListing = () => {
           <div className="mt-20 gap-2 flex items-center justify-center">
             <button
               className={`border-2 p-2 rounded-full ${startIndex === 0 ? "border-gray-600" : "border-yellow-600"}`}
-              onClick={handlePrevious}
+              onClick={() => {
+                handlePrevious();
+                window.scrollTo({ top: 0, behavior: "auto" });
+              }
+              }
               disabled={startIndex === 0}
             >
               {/* <img src={ArrowLeft} alt="arrow-left" /> */}
@@ -541,13 +575,20 @@ const ProductListing = () => {
                   name="options"
                   aria-label={`0${index + 1}`}
                   checked={currentPage === index}
-                  onChange={() => setCurrentPage(index)}
+                  onChange={() => {
+                    setCurrentPage(index);
+                    window.scrollTo({ top: 0, behavior: "auto" });
+                  }}
                 />
               ))}
             </div>
             <button
               className={`border-2 p-2 rounded-full ${endIndex >= products.length ? "border-gray-600" : "border-yellow-600"}`}
-              onClick={handleNext}
+              onClick={() => {
+                handleNext();
+                window.scrollTo({ top: 0, behavior: "auto" });
+              }
+              }
               disabled={endIndex >= products.length}
             >
               {/* <img src={ArrowRight} alt="arrow-right" /> */}
@@ -558,6 +599,200 @@ const ProductListing = () => {
           </div>
         </div>
       </div>
+
+
+      {/* Filters in Phone */}
+
+      <div className="fixed bottom-0 left-0 right-0 md:hidden flex justify-center backdrop-blur p-4 z-40">
+        <button
+          className="bg-orange-600 text-white py-3 px-10 tracking-widest rounded-lg text-sm font-bold"
+          onClick={toggleFilterModal}
+        >
+          Filters
+        </button>
+      </div>
+
+      <div
+        className={`fixed inset-0 z-50 bg-white p-6 overflow-y-auto transition-transform duration-1000 ease-out transform ${isFilterOpen ? 'translate-y-0' : 'translate-y-full'
+          }`}
+      >
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-lg font-bold">Filters</h2>
+          <button
+            className="text-gray-500 hover:text-gray-700"
+            onClick={toggleFilterModal}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 fill-black"
+              viewBox="0 0 320.591 320.591"
+            >
+              <path
+                d="M30.391 318.583a30.37 30.37 0 0 1-21.56-7.288c-11.774-11.844-11.774-30.973 0-42.817L266.643 10.665c12.246-11.459 31.462-10.822 42.921 1.424 10.362 11.074 10.966 28.095 1.414 39.875L51.647 311.295a30.366 30.366 0 0 1-21.256 7.288z"
+                data-original="#000000"
+              ></path>
+              <path
+                d="M287.9 318.583a30.37 30.37 0 0 1-21.257-8.806L8.83 51.963C-2.078 39.225-.595 20.055 12.143 9.146c11.369-9.736 28.136-9.736 39.504 0l259.331 257.813c12.243 11.462 12.876 30.679 1.414 42.922-.456.487-.927.958-1.414 1.414a30.368 30.368 0 0 1-23.078 7.288z"
+                data-original="#000000"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        {/* Category */}
+
+        <div>
+          <div className="flex justify-between items-center">
+            <h3 className="text-base font-semibold mb-2">Category</h3>
+            <img
+              src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+              className="w-5 h-5 items-center justify-center mt-3 block md:hidden"
+            />
+          </div>
+          <div className="">
+            {categories.map((category) => (
+              <ul key={category.id} className="flex mt-2 gap-2 items-center">
+                <input type="radio" name="radio-1" id={category.id} onChange={(e) => console.log(e.target.id)
+                } className="radio" />
+                <label htmlFor={category.id} className="cursor-pointer text-sm lg:text-base">{category.name}</label>
+              </ul>
+            ))}
+          </div>
+        </div>
+
+        <div className="divider my-4"></div>
+
+        {/* Price Range */}
+
+        <div>
+          <div className="flex justify-between items-center">
+            <h3 className="text-base font-semibold mb-2">Price Range</h3>
+            <img
+              src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+              className="w-5 h-5 items-center justify-center mt-3 block md:hidden"
+            />
+          </div>
+          <div className="" data-aos="fade-up"
+            data-aos-duration="500">
+            <div>
+              <label htmlFor="price" className="opacity-70 block text-black dark:text-white">
+                <div className="w-full flex justify-between items-center">
+                  <p className="md:text-sm lg:text-base">Max Price</p>
+                  <p className="font-bold lg:text-xl">$ {priceValue}</p>
+                </div>
+              </label>
+              <div className="bg-gray-100 rounded-full p-2 flex items-center justify-center">
+                <input
+                  type="range"
+                  name="price"
+                  id="price"
+                  className="appearance-none w-full bg-yellow-600 h-2 rounded-full my-2"
+                  min="0"
+                  max="10000"
+                  value={priceValue}
+                  step="100"
+                  onChange={handleRangeChange}
+                />
+              </div>
+            </div>
+
+            {priceRanges.map((priceRange) => (
+              <ul key={priceRange.id} className="flex mt-2 gap-2 items-center">
+                <input
+                  type="radio"
+                  name="priceRange"
+                  id={priceRange.id}
+                  checked={selectedRange.length > 1 ? selectedRange[1].id === priceRange.id : selectedRange[0].id === priceRange.id}
+                  onChange={() => handleRangeSelect(priceRange)}
+                  className="radio focus:border-none"
+                />
+                <label htmlFor={priceRange.id} className="cursor-pointer text-sm lg:text-base">{priceRange.name}</label>
+              </ul>
+            ))}
+          </div>
+        </div>
+
+        <div className="divider my-4"></div>
+
+        {/* Popular Brands */}
+
+        <div>
+          <div className="flex justify-between items-center">
+            <h3 className="text-base font-semibold mb-2">Popular Brands</h3>
+            <img
+              src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+              className="w-5 h-5 items-center justify-center mt-3 block md:hidden"
+            />
+          </div>
+          <div className="gap-2 mt-2">
+            <div className="gap-2 grid grid-cols-1 xl:grid-cols-2 md:grid-cols-1 md:mt-3">
+              {brands.map((brand) => (
+                <div key={brand.id} className="flex items-center gap-2">
+                  <input
+                    type="checkbox"
+                    checked={brand.isChecked}
+                    name={brand.name}
+                    id={brand.id}
+                    className="checkbox w-5 h-5 lg:w-6 lg:h-6"
+                    onChange={handleBrandsStatus}
+                  />
+                  <label htmlFor={brand.id} className="cursor-pointer lg:text-base text-sm">{brand.name}</label>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="divider my-4"></div>
+
+        {/* Popular Tags */}
+
+        <div>
+          <div className="flex justify-between items-center">
+            <h3 className="text-base font-semibold mb-2">Popular Tags</h3>
+            <img
+              src="https://t3.ftcdn.net/jpg/03/21/21/26/360_F_321212678_hSKU8jlbFhiBzPEXS7BUS9b89nTygCYD.jpg"
+              className="w-5 h-5 items-center justify-center mt-3 block md:hidden"
+            />
+          </div>
+          <div className="" >
+            <div className="gap-2 grid grid-cols-3 mt-3">
+              {tags.map((brand) => (
+                <div
+                  key={brand.id}
+                  className={`flex gap-2 border-2 py-2 md:py-2 xl:p-2 rounded-md cursor-pointer ${selectedTagIds.includes(brand.id) ? 'bg-black text-white' : 'border-gray-400'
+                    }`}
+                  onClick={() => handleTagClick(brand.id)}
+                >
+                  <h3 className="px-1 lg:px-2 font-bold text-sm lg:text-md">
+                    {brand.name}
+                  </h3>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="divider my-4"></div>
+        <div className="text-center mt-5">
+          <button className="bg-orange-500 text-white py-2 px-5 rounded-lg hover:bg-orange-600"
+          onClick={toggleFilterModal}
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+
+
+      <div className="divider my-4"></div>
+
+
+      {/* Add an overlay when the modal is open */}
+      {isFilterOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          onClick={toggleFilterModal}
+        ></div>
+      )}
     </div>
   );
 };

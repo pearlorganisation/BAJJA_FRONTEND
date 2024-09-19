@@ -1,18 +1,19 @@
 export const SearchBar = () => {
   return (
-    <div className="p-1 ">
-      <form className="max-w-md ">
+    <div className="p-1 w-full md:w-auto" data-aos="fade-up"
+      data-aos-duration="500">
+      <form className="md:max-w-md w-full">
         <label
           htmlFor="default-search"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
         >
           Search
         </label>
-        <div className="relative">
+        <div className="relative w-full">
           <input
             type="search"
             id="default-search"
-            className="rounded-sm block lg:w-80 md:w-80 w-auto p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="rounded-sm block md:w-80  w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300  bg-white focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search for anything..."
             required
           />

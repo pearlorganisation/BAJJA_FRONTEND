@@ -13,7 +13,8 @@ const Auth = () => {
         }}
       >
         <div className="max-w-[600px] w-full text-gray-600 border-2 p-8 bg-white border-gray-400 rounded-xl items-center">
-          <div className="text-center">
+          <div className="text-center"  data-aos="fade-up"
+              data-aos-duration="500">
             <img
               src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724630400&semt=ais_hybrid"
               width={150}
@@ -23,20 +24,23 @@ const Auth = () => {
 
           <div className="flex items-center flex-col">
             <button
-              className="w-[80%] px-4 py-2 text-white font-medium bg-green-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
-              onClick={() => navigate("/register")}
+              className="w-[65%] px-4 py-2 text-white font-medium bg-green-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+              onClick={() => navigate("/register")}  data-aos="fade-up"
+              data-aos-duration="600"
             >
               Sign up
             </button>
 
             <button
-              className="mt-8 w-[80%] border-2 px-4 py-2 text-green-600 bg-white font-medium border-green-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
-              onClick={() => navigate("/login")}
+              className="mt-8 w-[65%] border-2 px-4 py-2 text-green-600 bg-white font-medium border-green-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"
+              onClick={() => navigate("/login")} data-aos="fade-up"
+              data-aos-duration="700"
             >
               Login
             </button>
 
-            <p className="mt-6">
+            <p className="mt-6 w-[65%] text-center" data-aos="fade-up"
+              data-aos-duration="800">
               By signing up you agree to our{" "}
               <span className="text-green-600"> Terms of use </span> and
               <span className="text-green-600"> Privacy Policy</span>

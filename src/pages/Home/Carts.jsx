@@ -75,9 +75,9 @@ const Carts = ({ el }) => {
                     </div>
                     <div>
                         {selector.addToCart.some((item) => item.id === el.id) ?
-                            <button className="w-full bg-orange-500 text-white font-semibold text-xs lg:text-base py-2 px-8 rounded hover:bg-orange-600"
+                            <button className="w-full bg-orange-500 text-white font-semibold text-xs lg:text-base py-2 lg:px-8 px-3 rounded hover:bg-orange-600"
                                 onClick={() => removeToCart(el)}>
-                                Remove from Cart
+                                Remove to Cart
                             </button>
                             :
                             <button className="w-full bg-orange-500 text-white font-semibold text-xs lg:text-base py-2 lg:px-8 px-4 rounded hover:bg-orange-600"

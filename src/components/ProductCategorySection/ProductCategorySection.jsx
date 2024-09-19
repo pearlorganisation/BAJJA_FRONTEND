@@ -25,7 +25,7 @@ const ProductCategorySection = ({ swiperWidth, showItem, margin }) => {
   const swiper = useRef(null)
   return (
     <div className="relative text-start" data-aos="fade-up"
-      data-aos-duration="1000">
+      data-aos-duration="500">
 
       {/* <div
         className="w-[40px] h-[40px] flex justify-center items-center rounded-full bg-black absolute top-1/2 left-4 z-10 cursor-pointer transform -translate-y-1/2"

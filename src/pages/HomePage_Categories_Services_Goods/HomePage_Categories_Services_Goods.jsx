@@ -28,9 +28,9 @@ const HomePage_Categories_Services_Goods = () => {
       <div>
         {/* Crousal */}
         <div className="relative w-full overflow-hidden" data-aos="fade-up"
-          data-aos-duration="1000">
+          data-aos-duration="500">
           <div
-            className="flex transition-transform duration-1000 "
+            className="flex transition-transform duration-500 "
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((image, index) => (
@@ -55,7 +55,7 @@ const HomePage_Categories_Services_Goods = () => {
           <div className="max-w-screen-xl md:mx-auto mx-10 my-8 p-4 border rounded-lg">
             <div className="flex flex-col md:flex-row justify-between space-y-6 md:space-y-0">
               <div className="flex items-center space-x-4" data-aos="fade-up"
-                data-aos-duration="1000">
+                data-aos-duration="500">
                 <div className="p-3 bg-gray-100 rounded-full">
                   <CiDeliveryTruck />
                 </div>
@@ -69,7 +69,7 @@ const HomePage_Categories_Services_Goods = () => {
               <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
               <div className="flex items-center space-x-4" data-aos="fade-up"
-                data-aos-duration="1000">
+                data-aos-duration="500">
                 <div className="p-3 bg-gray-100 rounded-full">
                   <CiTrophy />
                 </div>
@@ -83,7 +83,7 @@ const HomePage_Categories_Services_Goods = () => {
               <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
               <div className="flex items-center space-x-4" data-aos="fade-up"
-                data-aos-duration="1000">
+                data-aos-duration="500">
                 <div className="p-3 bg-gray-100 rounded-full">
                   <MdOutlinePayment />
                 </div>
@@ -98,7 +98,7 @@ const HomePage_Categories_Services_Goods = () => {
               <div className="hidden md:block w-px h-12 bg-gray-200"></div>
 
               <div className="flex items-center space-x-4" data-aos="fade-up"
-                data-aos-duration="1000">
+                data-aos-duration="500">
                 <div className="p-3 bg-gray-100 rounded-full">
                   <BiSupport />
                 </div>

@@ -11,7 +11,8 @@ const Login = () => {
         }}
       >
         <div className="max-w-[600px] w-full text-gray-600 border-2 p-8 bg-white border-gray-400 rounded-xl items-center">
-          <div className="text-center">
+          <div className="text-center" data-aos="fade-up"
+              data-aos-duration="500">
             <img
               src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1724630400&semt=ais_hybrid"
               width={150}
@@ -22,7 +23,8 @@ const Login = () => {
           <div className="flex  flex-col">
             <form>
               <div>
-                <div className="mt-2 ">
+                <div className="mt-2 " data-aos="fade-up"
+              data-aos-duration="600">
                   <label className="text-black ">Email Address</label>
                   <input
                     type="text"
@@ -31,7 +33,8 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4" data-aos="fade-up"
+              data-aos-duration="700">
                   <label className="text-black ">Password</label>
                   <input
                     type="text"
@@ -42,21 +45,25 @@ const Login = () => {
               </div>
             </form>
 
-            <Link to={`/forgot`}>
+            <Link to={`/forgot`} data-aos="fade-up"
+              data-aos-duration="800">
               <h5 className="text-green-600 mt-3">Forgot Password ?</h5>
             </Link>
 
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center" data-aos="fade-up"
+              data-aos-duration="900">
               <button className="w-full flex items-center  rounded-full bg-green-600 justify-center gap-x-3 py-2.5 mt-5 text-sm font-medium hover:bg-gray-800 hover:text-white duration-150 active:bg-gray-100">
                 Login
               </button>
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center" data-aos="fade-up"
+              data-aos-duration="1000">
               <p className="mt-6 text-sm">Sign up with Facebook or Google ?</p>
             </div>
 
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center" data-aos="fade-up"
+              data-aos-duration="1000">
               <p className="mt-1">
                 <span className="text-green-600 text-sm"> Create Password</span>
               </p>

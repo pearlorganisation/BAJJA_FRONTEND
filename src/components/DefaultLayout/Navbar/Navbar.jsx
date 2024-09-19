@@ -3,7 +3,7 @@ import Compare from "../../../assets/Compare.png";
 import Support from "../../../assets/Support.png";
 import Info from "../../../assets/Info.png";
 import Location from "../../../assets/Location.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Services } from "../../../../JSON Data/Services/Services";
 import { Professional_Services } from "../../../../JSON Data/Services/Sub_Services/Professional_Services";
 import { Health_Wellness_Services } from "../../../../JSON Data/Services/Sub_Services/Health_Wellness_Services";
@@ -17,6 +17,7 @@ import { Travel_Hospitality_Services } from "../../../../JSON Data/Services/Sub_
 import { Home_Services } from "../../../../JSON Data/Services/Sub_Services/Home_Services";
 import { Link } from "react-router-dom";
 import "./Navbar.css"
+import axios from "axios";
 
 const Navbar = () => {
   const [isCategory, setIsCategory] = useState(false);
@@ -73,6 +74,23 @@ const Navbar = () => {
         break;
     }
   }
+
+  const fetchData = async () => {
+    try {
+      fetch("https://bajja-mern.onrender.com/api/v1/categories").then((rs) => {
+        console.log(rs);
+      }).catch((err) => {
+        console.log(err);
+
+      })
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [])
 
   return (
     <div className="m-2 mx-10 flex items-center justify-between overflow-x-auto pb-2 custom-scrollbar">
@@ -254,7 +272,7 @@ const Navbar = () => {
                   <Link to={`/services/${serviceName.toLocaleLowerCase()}/${item.name.toLowerCase().split(" ").join('_')}`}
                     className="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:hover:text-neutral-300 dark:focus:bg-neutral-700"
                     href="#"
-                    
+
                   >
                     {item.name}
                   </Link>

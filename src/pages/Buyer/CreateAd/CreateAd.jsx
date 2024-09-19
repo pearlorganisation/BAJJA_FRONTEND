@@ -1,3 +1,5 @@
+import FileUpload from "../Drag_and_DropFiles/DragAndDropFiles";
+
 const categories = [
   {
     id: 1,
@@ -36,12 +38,14 @@ const CreateAd = () => {
         }}
       >
         <div className="max-w-[95%] w-full text-gray-600 border-2 p-8 bg-white border-gray-400 rounded-xl items-center">
-          <div className="">
-            <h1 className="text-4xl font-bold">NEW ADS</h1>
+          <div className="" data-aos="fade-up"
+            data-aos-duration="500">
+            <h1 className="md:text-4xl text-lg font-bold">NEW ADS</h1>
           </div>
 
-          <div className="mt-4">
-            <h1 className="text-2xl font-bold">PRODUCT NAME </h1>
+          <div className="mt-10" data-aos="fade-up"
+            data-aos-duration="600">
+            <h1 className="md:text-2xl text-sm font-bold">TITLE </h1>
 
             <input
               type="text"
@@ -50,19 +54,21 @@ const CreateAd = () => {
             />
           </div>
 
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold">DESCRIPTION </h1>
+          <div className="mt-6" data-aos="fade-up"
+            data-aos-duration="700">
+            <h1 className="md:text-2xl text-base font-bold">DESCRIPTION </h1>
 
             <textarea
-              className="textarea textarea-ghost w-full h-[200px] mt-3"
+              className="textarea textarea-ghost w-full h-[200px] mt-3 shadow-xl border-2 border-gray-100"
               placeholder="Enter your description here..."
             ></textarea>
           </div>
 
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold">TYPE</h1>
+          <div className="mt-6" data-aos="fade-up"
+            data-aos-duration="800">
+            <h1 className="md:text-2xl font-bold">TYPE</h1>
 
-            <select className="select select-ghost w-full mt-3">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
               <option disabled selected>
                 Choose Customer Type
               </option>
@@ -71,10 +77,11 @@ const CreateAd = () => {
             </select>
           </div>
 
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold ">CATEGORIES</h1>
+          <div className="mt-6" data-aos="fade-up"
+            data-aos-duration="900">
+            <h1 className="md:text-2xl font-bold ">CATEGORIES</h1>
 
-            <select className="select select-ghost w-full mt-3">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
               <option disabled selected>
                 Choose Category
               </option>
@@ -85,10 +92,11 @@ const CreateAd = () => {
             </select>
           </div>
 
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold">SUB CATEGORIES</h1>
+          <div className="mt-6" data-aos="fade-up"
+            data-aos-duration="700">
+            <h1 className="md:text-2xl font-bold">SUB CATEGORIES</h1>
 
-            <select className="select select-ghost w-full mt-3">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
               <option disabled selected>
                 Choose Sub Category
               </option>
@@ -99,27 +107,29 @@ const CreateAd = () => {
             </select>
           </div>
 
-          <div className="mt-6">
-            <h1 className="text-2xl font-bold ">PRICE</h1>
+          <div className="mt-6" data-aos="fade-up"
+            data-aos-duration="800">
+            <h1 className="md:text-2xl font-bold ">PRICE</h1>
 
-            <div className="flex justify-evenly mt-3">
+            <div className="flex flex-col md:flex-row gap-5 justify-evenly mt-3">
               <input
                 type="number"
                 placeholder="Minimum Price..."
-                className="input input-bordered w-[40%]"
+                className="input input-bordered md:w-[40%] w-full shadow-xl border-2 border-gray-100"
               />
               <input
                 type="number"
                 placeholder="Maximum Price..."
-                className="input input-bordered w-[40%]"
+                className="input input-bordered md:w-[40%] w-full shadow-xl border-2 border-gray-100"
               />
             </div>
 
-            <div className="items-center justify-center w-full mt-6">
-              <h1 className="font-bold text-2xl">Image Upload</h1>
-              <label
+            <div className="items-center justify-center w-full mt-6" data-aos="fade-up"
+              data-aos-duration="900">
+              <h1 className="font-bold md:text-2xl">Image Upload</h1>
+              {/* <label
                 htmlFor="dropzone-file"
-                className="flex flex-col mt-4 items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 "
+                className="flex flex-col mt-4 items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 shadow-xl"
               >
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg
@@ -151,11 +161,13 @@ const CreateAd = () => {
                   multiple="true"
                   className="hidden"
                 />
-              </label>
+              </label> */}
+              <FileUpload />
             </div>
           </div>
 
-          <div className="flex items-center flex-col mt-6">
+          <div className="flex items-center flex-col mt-6" data-aos="fade-up"
+            data-aos-duration="500">
             <button className="w-[40%] px-4 py-2 text-white font-medium bg-black hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
               Upload
             </button>

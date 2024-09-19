@@ -118,39 +118,39 @@ const Footer = () => {
             <div className=" grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
               <div className="lg:col-span-1">
                 <div className="flex gap-3" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   <Link to="/">
                     <img src={Logo} alt="logo" className="w-10 mb-8" />
                   </Link>
                   <h3 className="text-white text-4xl font-bold">LOGO</h3>
                 </div>
                 <h3 className="text-gray-300 text-sm mt-3" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   Customer Supports
                 </h3>
                 <h3 className="text-white text-sm mt-1" data-aos="fade-up"
-                  data-aos-duration="1000">(629) 555-0129</h3>
+                  data-aos-duration="500">(629) 555-0129</h3>
                 <h3 className="text-gray-300 text-sm mt-2" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   4517 Washington Ave.
                 </h3>
                 <h3 className="text-gray-300 text-sm mt-1" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   Manchester, Kentucky
                 </h3>
                 <h3 className="text-white text-sm mt-2" data-aos="fade-up"
-                  data-aos-duration="1000">info@kimbo.com</h3>
+                  data-aos-duration="500">info@kimbo.com</h3>
               </div>
 
               <div>
                 <h4 className="text-lg font-semibold mb-8 text-white" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   Top Categories
                 </h4>
 
                 {topCategories.map((topCategory) => (
                   <ul key={topCategory.id} className="space-y-4" data-aos="fade-up"
-                    data-aos-duration="1000">
+                    data-aos-duration="500">
                     <li>
                       <a
                         href="javascript:void(0)"
@@ -163,11 +163,11 @@ const Footer = () => {
                 ))}
 
                 <h4 className="text-white mt-4" data-aos="fade-up"
-                  data-aos-duration="1000">Services</h4>
+                  data-aos-duration="500">Services</h4>
 
                 {services.map((service) => (
                   <ul key={service.id} className="space-y-4" data-aos="fade-up"
-                    data-aos-duration="1000">
+                    data-aos-duration="500">
                     <li>
                       <a
                         href="javascript:void(0)"
@@ -180,7 +180,7 @@ const Footer = () => {
                 ))}
 
                 <div className="mt-4 flex gap-2" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   <h4 className="text-yellow-600 ">Browser All Services</h4>
                   <img src={ArrowRight} alt="arr right" />
                 </div>
@@ -188,13 +188,13 @@ const Footer = () => {
 
               <div>
                 <h4 className="text-lg font-semibold mb-8 text-white" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   Quick Links
                 </h4>
 
                 {quickLinks.map((quickLink) => (
                   <ul key={quickLink.id} className="space-y-4" data-aos="fade-up"
-                    data-aos-duration="1000">
+                    data-aos-duration="500">
                     <li>
                       <a
                         href="javascript:void(0)"
@@ -209,19 +209,19 @@ const Footer = () => {
 
               <div>
                 <h4 className="text-lg font-semibold mb-8 text-white" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   DOWNLOAD APP
                 </h4>
 
                 <img src={PlayStore} className="mt-4" data-aos="fade-up"
-                  data-aos-duration="1000" />
+                  data-aos-duration="500" />
                 <img src={AppStore} className="mt-4" data-aos="fade-up"
-                  data-aos-duration="1000" />
+                  data-aos-duration="500" />
               </div>
 
               <div>
                 <h4 className="text-lg font-semibold mb-8 text-white" data-aos="fade-up"
-                  data-aos-duration="1000">
+                  data-aos-duration="500">
                   Popular Tags
                 </h4>
                 <div className="space-y-4">
@@ -231,7 +231,7 @@ const Footer = () => {
                         key={brand.id}
                         className="flex gap-2  p-2 rounded-md"
                         data-aos="fade-up"
-                        data-aos-duration="1000"
+                        data-aos-duration="500"
                       >
                         <h3 className="px-2 font-bold text-md text-white">
                           {brand.name}
@@ -246,8 +246,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center py-5 bg-[#000]">
-          <p className="text-gray-300 text-sm" data-aos="fade-up"
-            data-aos-duration="1000">
+          <p className="text-gray-300 text-sm">
             Kinbo Ecommerce Template © 2021 Designed By Template Cookie
           </p>
         </div>

@@ -4,7 +4,8 @@ const BreadCrumb = () => {
   const path = useLocation();
 
   return (
-    <div className="breadcrumbs md:text-sm text-xs md:p-4 p-1">
+    <div className="breadcrumbs md:text-sm text-xs md:p-4 p-1" data-aos="fade-up"
+      data-aos-duration="500">
       <ul className="flex flex-row">
         <li>
           <a>
