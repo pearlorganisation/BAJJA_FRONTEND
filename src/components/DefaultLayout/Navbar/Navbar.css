@@ -14,3 +14,11 @@
 .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
 }
+
+.category_ScrollBar::-webkit-scrollbar {
+    display: none;
+}
+.category_ScrollBar{
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

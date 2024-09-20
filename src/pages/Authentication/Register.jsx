@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux";
+
 const Register = () => {
+  const userRole = useSelector(state=>state.userRole);
   return (
     <div>
       <main
@@ -43,52 +46,47 @@ const Register = () => {
                   </div>
                   <div className="mt-2" data-aos="fade-up"
                     data-aos-duration="800">
-                    {/* <label>Email Address</label> */}
                     <input
                       type="text"
-                      placeholder="Email Address"
+                      placeholder="User-name"
                       required
                       className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
+                  </div>
+                  <div className="mt-2" data-aos="fade-up"
+                    data-aos-duration="800">
+                    {/* <label>Email Address</label> */}
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="Email"
+                      id="email"
+                      className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                      required />
                   </div>
 
                   <div className="mt-2" data-aos="fade-up"
                     data-aos-duration="900">
                     {/* <label>Password</label> */}
                     <input
-                      type="text"
+                      type="password"
                       placeholder="Password"
                       required
                       className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
                   </div>
-                  <div className="relative mt-2 border-gray-800 text-gray-500 rounded-xl mt-1" data-aos="fade-up"
-                    data-aos-duration="900">
-                    {/* <label htmlFor="">Phone Number</label> */}
-                    <div className="absolute left-3 inset-y-0 h-6 flex items-center border-r border-gray-500 pr-2 my-auto">
-                      <select className="text-sm bg-transparent outline-none rounded-lg h-full cursor-pointer">
-                        <option className="cursor-pointer">+91</option>
-                        <option className="cursor-pointer">+1</option>
-                        <option className="cursor-pointer">+3</option>
-                      </select>
-                    </div>
-                    <input
-                      type="number"
-                      placeholder="Phone Number"
-                      required
-                      className="w-full pl-[4.5rem] pr-3 py-2 appearance-none bg-transparent outline-none border focus:border-indigo-600 border-black shadow-sm rounded-lg"
-                    />
-                  </div>
                   <div className="mt-2" data-aos="fade-up"
-                    data-aos-duration="1000">
-                    {/* <label htmlFor="">Zip Code</label> */}
+                    data-aos-duration="900">
+                    {/* <label>Password</label> */}
                     <input
-                      type="number"
-                      placeholder="Zip Code"
-                      required
-                      className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                      type="text"
+                      placeholder="Buyer"
+                      value={userRole}
+                      disabled
+                      className="w-full pl-12 border-gray-400 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
                   </div>
+
                 </div>
               </div>
               <p className="mt-6 text-md text-center" data-aos="fade-up"

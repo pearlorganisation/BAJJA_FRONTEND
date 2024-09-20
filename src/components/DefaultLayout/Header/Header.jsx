@@ -19,6 +19,7 @@ const Header = () => {
   };
 
   let bg;
+  console.log("first",location.pathname.split("/")[1]);
   switch (location.pathname.split("/")[1]) {
     case "services":
       bg = "orange-400";
@@ -26,8 +27,11 @@ const Header = () => {
     case "categories":
       bg = "yellow-400"
       break;
+    // case "":
+    //    bg = "primary"
+    //    break;
     default:
-      bg = "primary";
+      bg = "lightblue";
       break;
   }
   useEffect(() => {
@@ -41,9 +45,11 @@ const Header = () => {
     };
   }, [isOpen]);
 
+  console.log(bg,"sffd");
+
   return (
     <div>
-      <header className={`flex bg-${bg} border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
+      <header style={{backgroundColor:`${bg}`}} className={`flex border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
         <div className="flex items-center justify-between lg:gap-y-2 gap-0 w-full">
           <Link to="/">
             <h1>LOGO</h1>
