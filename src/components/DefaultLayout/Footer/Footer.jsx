@@ -1,4 +1,4 @@
-import Logo from "../../../assets/Logo.png";
+import Logo from "../../../assets/LogoM.png";
 import PlayStore from "../../../assets/PlayStore.png";
 import AppStore from "../../../assets/AppStore.png";
 import ArrowRight from "../../../assets/ArrowRight.png";
@@ -120,9 +120,9 @@ const Footer = () => {
                 <div className="flex gap-3" data-aos="fade-up"
                   data-aos-duration="500">
                   <Link to="/">
-                    <img src={Logo} alt="logo" className="w-10 mb-8" />
+                    <img src={Logo} alt="logo" className="w-28 mb-8" />
                   </Link>
-                  <h3 className="text-white text-4xl font-bold">LOGO</h3>
+                  {/* <h3 className="text-white text-4xl font-bold">LOGO</h3> */}
                 </div>
                 <h3 className="text-gray-300 text-sm mt-3" data-aos="fade-up"
                   data-aos-duration="500">

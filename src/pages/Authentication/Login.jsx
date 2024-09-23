@@ -1,14 +1,62 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Loading from "../../components/LoadingData/Loading";
 import { useState } from "react";
+import axios from "axios";
+import { Base_Url } from "../../API_Base_Url/Base_Url";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const fatchLoading = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = async () => {
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await axios.post(`${Base_Url}/v1/auth/login`, {
+        email: email,
+        password: password
+      });
+
+
+      if (res.status === 200) {
+
+        setMessage('Login successful!');
+        localStorage.setItem("token", res.data.api_key);
+        navigate('/');
+      } else if (res.status === 201) {
+        setMessage('Login successful and resource created!');
+        console.log('Created:', res.data);
+      } else {
+        setMessage('Unexpected response');
+      }
+    } catch (error) {
+      if (error.response) {
+
+        if (error.response.status === 401) {
+          setMessage('Invalid email or password');
+        } else if (error.response.status === 400) {
+          setMessage('Bad request, please check your input');
+        } else {
+          setMessage(`Error: ${error.response.data.message || 'Something went wrong'}`);
+        }
+        console.log('Error response:', error.response);
+      } else {
+
+        setMessage('Network error, please try again');
+        console.log('Error:', error);
+      }
+    } finally {
       setLoading(false);
-    }, 1000)
+    }
+  };
+
+
+  const fatchLoading = (e) => {
+    e.preventDefault();
+    handleLogin();
+    console.log(email, " ", password);
   }
   return (
     <div>
@@ -28,9 +76,9 @@ const Login = () => {
               className="mx-auto"
             />
           </div>
-
+          {message && <p>{message}</p>}
           <div className="flex  flex-col">
-            <form>
+            <form onSubmit={(e) => fatchLoading(e)}>
               <div>
                 <div className="mt-2 " data-aos="fade-up"
                   data-aos-duration="600">
@@ -39,6 +87,9 @@ const Login = () => {
                     type="email"
                     placeholder="Email Address"
                     className="w-full pl-12 pr-3 py-2  border-black text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value={email}
+                    required
                   />
                 </div>
 
@@ -49,24 +100,25 @@ const Login = () => {
                     type="password"
                     placeholder="Password"
                     className="w-full pl-12 pr-3 py-2 border-black text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    required
                   />
                 </div>
               </div>
+              <Link to={`/forgot`}>
+                <h5 className="text-green-600 mt-3" data-aos="fade-up"
+                  data-aos-duration="800">Forgot Password ?</h5>
+              </Link>
+
+              <div className="flex justify-center items-center" data-aos="fade-up"
+                data-aos-duration="900">
+                <button className="w-full flex items-center  rounded-full bg-green-600 justify-center gap-x-3 py-2.5 mt-5 text-sm font-medium hover:bg-gray-800 hover:text-white duration-150 active:bg-gray-100">
+                  Login
+                </button>
+              </div>
             </form>
 
-            <Link to={`/forgot`} data-aos="fade-up"
-              data-aos-duration="800">
-              <h5 className="text-green-600 mt-3">Forgot Password ?</h5>
-            </Link>
-
-            <div className="flex justify-center items-center" data-aos="fade-up"
-              data-aos-duration="900">
-              <button className="w-full flex items-center  rounded-full bg-green-600 justify-center gap-x-3 py-2.5 mt-5 text-sm font-medium hover:bg-gray-800 hover:text-white duration-150 active:bg-gray-100"
-                onClick={fatchLoading}
-              >
-                Login
-              </button>
-            </div>
 
             <div className="flex items-center justify-center" data-aos="fade-up"
               data-aos-duration="1000">
@@ -82,8 +134,7 @@ const Login = () => {
           </div>
         </div>
       </main>
-      {loading &&
-        <Loading />}
+      {loading && <Loading />}
     </div>
   );
 };

@@ -12,6 +12,10 @@ import CreateAd from "../pages/Buyer/CreateAd/CreateAd";
 import ProductCategorySection from "../components/ProductCategorySection/ProductCategorySection";
 import AddToCart from "../pages/Home/AddToCart/AddToCart";
 import HomePage_Categories_Services_Goods from "../pages/HomePage_Categories_Services_Goods/HomePage_Categories_Services_Goods";
+import ProtectedRoute from "./ProtechtedRoute/ProtectedRoute";
+import UserDetails from "../pages/Authentication/UserDetails/UserDetails";
+import CreateNewPassword from "../pages/Authentication/UserDetails/CreateNewPassword";
+
 
 const routes = createBrowserRouter([
   {
@@ -20,13 +24,20 @@ const routes = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
-        path:":type",
-        element:<HomePage_Categories_Services_Goods/>
+        path: ":type",
+        element: (
+          <ProtectedRoute>
+            <HomePage_Categories_Services_Goods />
+          </ProtectedRoute>
+        ),
       },
-
       {
         path: "about_us",
         element: <About />,
@@ -39,16 +50,28 @@ const routes = createBrowserRouter([
         path: ":type/:servicename/:subtitle",
         element: <ProductListing />,
       },
-    
+      
       {
-        path:"addToCart",
-        element:<AddToCart/>
+        path: "addToCart",
+        element: (
+          <ProtectedRoute>
+            <AddToCart />
+          </ProtectedRoute>
+        ),
       }
     ],
   },
   {
     path: "/auth",
     element: <Auth />,
+  },
+  {
+    path: "/userDetails",
+    element: <UserDetails />,
+  },
+  {
+    path:"/create-new-password",
+    element:<CreateNewPassword/>
   },
   {
     path: "/register",

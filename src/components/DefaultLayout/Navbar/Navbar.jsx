@@ -66,7 +66,7 @@ const Navbar = () => {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get(`${Base_Url}/categories`);
+      const res = await axios.get(`${Base_Url}/v1/categories`);
       handleCategory_ServiceData(res.data.data);
     } catch (error) {
       console.log(error);
@@ -330,7 +330,7 @@ const Navbar = () => {
 
         </div>
       </div>
-      <div className="flex  gap-2  mt-2 items-center justify-self-end">
+      <div className="flex  gap-2  mt-2 items-center justify-self-end lg:w-auto w-[10rem]">
         <img src={Call} alt="location" />
         <p>+1-202-555-0104</p>
       </div>

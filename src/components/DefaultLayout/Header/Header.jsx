@@ -1,6 +1,7 @@
 import Cart from "../../../assets/Cart.png";
 import Profile from "../../../assets/Profile.png";
 import Fav from "../../../assets/Fav.png";
+import logo from '../../../assets/logoM.png'
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { Link, NavLink } from "react-router-dom";
@@ -10,6 +11,7 @@ import Search from "./Search/Search";
 
 const Header = () => {
   const selector = useSelector(state => state);
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
@@ -19,19 +21,16 @@ const Header = () => {
   };
 
   let bg;
-  console.log("first",location.pathname.split("/")[1]);
   switch (location.pathname.split("/")[1]) {
     case "services":
-      bg = "orange-400";
+      bg = "orange";
       break;
     case "categories":
-      bg = "yellow-400"
+      bg = "rgb(255, 235, 59)"
       break;
-    // case "":
-    //    bg = "primary"
-    //    break;
+
     default:
-      bg = "lightblue";
+      bg = "skyblue";
       break;
   }
   useEffect(() => {
@@ -45,14 +44,12 @@ const Header = () => {
     };
   }, [isOpen]);
 
-  console.log(bg,"sffd");
-
   return (
     <div>
-      <header style={{backgroundColor:`${bg}`}} className={`flex border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
+      <header style={{ backgroundColor: `${bg}` }} className={`flex border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
         <div className="flex items-center justify-between lg:gap-y-2 gap-0 w-full">
           <Link to="/">
-            <h1>LOGO</h1>
+            <img className="w-20" src={logo} alt="logo" />
           </Link>
           <div className="flex items-center justify-between lg:gap-0 md:gap-0 gap-2">
             <div
@@ -65,8 +62,8 @@ const Header = () => {
                 <li className="mb-6 hidden max-lg:block">
                   <a href="javascript:void(0)">
                     <img
-                      src="https://readymadeui.com/readymadeui.svg"
-                      alt="logo"
+                      src={logo}
+                      // alt="logo"
                       className="w-36"
                     />
                   </a>
@@ -140,7 +137,7 @@ const Header = () => {
                 <span className="lg:hidden">
                   <Search />
                 </span>
-                <span className="relative cursor-pointer md:w-10 w-7" onClick={() => navigate("/auth")}>
+                <span className="relative cursor-pointer md:w-10 w-7" onClick={() => navigate(`${token ? "/userDetails" : "/auth"}`)}>
                   <img src={Profile} className="w-full" />
                 </span>
 

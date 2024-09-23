@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import FileUpload from "../Drag_and_DropFiles/DragAndDropFiles";
+import axios from "axios";
 
 const categories = [
   {
@@ -28,6 +30,28 @@ const categories = [
 ];
 
 const CreateAd = () => {
+  const [type, setType] = useState('');
+  const [servicesData, setServicesData] = useState([]);
+  const [categoryData, setCategoryData] = useState([]);
+
+  const handleCategory_ServiceData = (res) => {
+    const category = res.filter((item) => item.type === "Goods");
+    const services = res.filter((item) => item.type === "Services");
+    setServicesData(services);
+    setCategoryData(category)
+  }
+
+  const fetchData = async () => {
+    try {
+      const res = await axios.get(`${Base_Url}/v1/categories`);
+      handleCategory_ServiceData(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(()=>{
+    fetchData();
+  },[])
   return (
     <div>
       <main
@@ -40,7 +64,7 @@ const CreateAd = () => {
         <div className="max-w-[95%] w-full text-gray-600 border-2 p-8 bg-white border-gray-400 rounded-xl items-center">
           <div className="" data-aos="fade-up"
             data-aos-duration="500">
-            <h1 className="md:text-4xl text-lg font-bold">NEW ADS</h1>
+            <h1 className="md:text-4xl text-lg font-bold">NEW POST</h1>
           </div>
 
           <div className="mt-10" data-aos="fade-up"
@@ -66,14 +90,14 @@ const CreateAd = () => {
 
           <div className="mt-6" data-aos="fade-up"
             data-aos-duration="800">
-            <h1 className="md:text-2xl font-bold">TYPE</h1>
+            <h1 className="md:text-2xl font-bold">User Role</h1>
 
             <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
               <option disabled selected>
-                Choose Customer Type
+                Choose Category Type
               </option>
-              <option>Buyer</option>
-              <option>Seller</option>
+              <option>Goods</option>
+              <option>Services</option>
             </select>
           </div>
 

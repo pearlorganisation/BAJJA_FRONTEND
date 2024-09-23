@@ -2,8 +2,8 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { CiTrophy } from "react-icons/ci";
 import { MdOutlinePayment } from "react-icons/md";
 import { BiSupport } from "react-icons/bi";
-import LastViewed from "./LastViewed";
 import { useEffect, useState } from "react";
+import LastViewed from "./LastViewed";
 import RegisterUserCarts from "./RegisterUserCarts/RegisterUserCarts";
 import ProductCategorySection from "../../components/ProductCategorySection/ProductCategorySection";
 import LastCardsHome from "./LastCardsHome/LastCardsHome";
@@ -129,14 +129,15 @@ const Home = () => {
       {/* <LastViewed /> */}
 
       <RegisterUserCarts />
+
       <div className="mt-10">
         <h1 className='text-center font-bold text-3xl text-gray-700' data-aos="fade-up"
           data-aos-duration="500">Shop By Category</h1>
-        <div className="mx-16">
+        <div className="md:mx-16 mx-8">
           <ProductCategorySection showItem={6} swiperWidth={90} />
           <ProductCategorySection showItem={6} swiperWidth={90} />
         </div>
-        <div className="ml-16">
+        <div className="md:ml-16 ml-8" >
           <ProductCategorySection showItem={3} swiperWidth={50} />
         </div>
         <LastCardsHome />

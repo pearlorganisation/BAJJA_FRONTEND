@@ -1,7 +1,82 @@
+import axios from "axios";
+import { useState } from "react";
 import { useSelector } from "react-redux";
+import Loading from "../../components/LoadingData/Loading";
+import { Base_Url } from "../../API_Base_Url/Base_Url";
+import { useNavigate } from "react-router";
+import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const Register = () => {
-  const userRole = useSelector(state=>state.userRole);
+  const userRole = useSelector(state => state.userRole);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setlastName] = useState('');
+
+  const handleRegister = async () => {
+    setLoading(true);
+    try {
+      // const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // console.log(userCredential);
+      
+      const res = await axios.post(`${Base_Url}/v1/auth/signup`, {
+        username: userName,
+        email: email,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+        userRole: userRole.toLowerCase()
+      });
+
+      if (res.status === 200) {
+        setMessage('Registration successful!');
+        // localStorage.setItem("token", res.data.api_key);
+        // navigate('/');
+      } else if (res.status === 201) {
+        setMessage('Registration successful!');
+        navigate('/login');
+      } else {
+        setMessage('Unexpected response');
+      }
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          setMessage('Invalid email or password');
+        } else if (error.response.status === 400) {
+          setMessage(error.response.data.message);
+        } else {
+          setMessage(`Error: ${error.response.data.message || 'Something went wrong'}`);
+        }
+        console.log('Error response:', error.response);
+      } else {
+        setMessage('Network error, please try again');
+        console.log('Error:', error);
+      }
+    } finally {
+      setLoading(false);
+      clearMessageAfterTimeout();
+    }
+  };
+
+  const clearMessageAfterTimeout = () => {
+    setTimeout(() => {
+      setMessage('');
+    }, 5000); 
+  };
+
+  const handleForm = async (e) => {
+    e.preventDefault();
+    await handleRegister();
+    console.log("password:- ", password);
+  };
+  
+
+
   return (
     <div>
       <main
@@ -20,7 +95,8 @@ const Register = () => {
               className="mx-auto"
             />
           </div>
-          <form action="" className="md:w-96 w-auto">
+          {message && <p className="text-center text-red-500">{message}</p>}
+          <form action="" className="md:w-96 w-auto" onSubmit={handleForm}>
             <div className="flex flex-col">
               <div>
                 <div>
@@ -30,6 +106,8 @@ const Register = () => {
                     <input
                       type="text"
                       placeholder="First Name"
+                      onChange={(e) => setFirstName(e.target.value)}
+                      value={firstName}
                       required
                       className="w-full pl-12 pr-3 py-2 border-black text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
@@ -40,6 +118,8 @@ const Register = () => {
                     <input
                       type="text"
                       placeholder="Last Name"
+                      onChange={e => setlastName(e.target.value)}
+                      value={lastName}
                       required
                       className="w-full pl-12 pr-3 border-black py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
@@ -49,6 +129,8 @@ const Register = () => {
                     <input
                       type="text"
                       placeholder="User-name"
+                      onChange={(e) => setUserName(e.target.value)}
+                      value={userName}
                       required
                       className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                     />
@@ -60,6 +142,8 @@ const Register = () => {
                       type="email"
                       name="email"
                       placeholder="Email"
+                      onChange={e => setEmail(e.target.value)}
+                      value={email}
                       id="email"
                       className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
                       required />
@@ -70,9 +154,13 @@ const Register = () => {
                     {/* <label>Password</label> */}
                     <input
                       type="password"
+                      name="password"
+                      id="password"
                       placeholder="Password"
+                      onChange={e => setPassword(e.target.value)}
+                      value={password}
                       required
-                      className="w-full pl-12 border-black pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                      className={`w-full pl-12 ${password.length > 0 && password.length < 6 ? "border-red-500":"border-black"} pr-3 py-2 text-gray-500 bg-transparent outline-none border ${password.length < 6 ? "focus:border-red-600" : "focus:border-indigo-600"} shadow-sm rounded-lg`}
                     />
                   </div>
                   <div className="mt-2" data-aos="fade-up"
@@ -104,6 +192,7 @@ const Register = () => {
           </form>
         </div>
       </main>
+      {loading && <Loading />}
     </div>
   );
 };

@@ -1,1 +1,1 @@
-export const Base_Url = 'https://bajja-mern.onrender.com/api/v1';
+export const Base_Url = 'https://bajja-mern.onrender.com/api';
