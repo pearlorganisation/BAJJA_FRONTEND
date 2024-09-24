@@ -4,17 +4,6 @@ import Support from "../../../assets/Support.png";
 import Info from "../../../assets/Info.png";
 import Location from "../../../assets/Location.png";
 import { useEffect, useState } from "react";
-import { Services } from "../../../../JSON Data/Services/Services";
-import { Professional_Services } from "../../../../JSON Data/Services/Sub_Services/Professional_Services";
-import { Health_Wellness_Services } from "../../../../JSON Data/Services/Sub_Services/Health_Wellness_Services";
-import { Educational_Services } from "../../../../JSON Data/Services/Sub_Services/Educational_Services";
-import { Entertainment_Services } from "../../../../JSON Data/Services/Sub_Services/Entertainment_Services";
-import { Automotive_Services } from "../../../../JSON Data/Services/Sub_Services/Automotive_Services";
-import { Financial_Services } from "../../../../JSON Data/Services/Sub_Services/Financial_Services";
-import { Real_Esate_Services } from "../../../../JSON Data/Services/Sub_Services/Real_Esate_Services";
-import { Personal_Services } from "../../../../JSON Data/Services/Sub_Services/Personal_Services";
-import { Travel_Hospitality_Services } from "../../../../JSON Data/Services/Sub_Services/Travel_Hospitality_Services";
-import { Home_Services } from "../../../../JSON Data/Services/Sub_Services/Home_Services";
 import { Link } from "react-router-dom";
 import "./Navbar.css"
 import axios from "axios";

@@ -7,9 +7,9 @@ const FileUpload = () => {
         setFiles((prevFiles) => [...prevFiles, ...Array.from(newFiles)]);
     };
 
-    const handleDrop = (event) => {
-        event.preventDefault();
-        const droppedFiles = event.dataTransfer.files;
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const droppedFiles = e.dataTransfer.files;
         handleFiles(droppedFiles);
     };
 
@@ -51,7 +51,9 @@ const FileUpload = () => {
                                 alt={file.name}
                                 className="md:w-28 md:h-28 w-14 h-14 object-cover rounded"
                             />
-                            <button className='absolute top-0 right-0 mt-[-0.5rem] mr-[-0.5rem] bg-green-600 rounded-full p-1' onClick={() => handleImageCancel(file)}>
+                            <button className='absolute top-0 right-0 mt-[-0.5rem] mr-[-0.5rem] bg-green-600 rounded-full p-1'
+                                onClick={() => handleImageCancel(file)}
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     className="md:w-3 w-2 fill-black"
@@ -70,12 +72,6 @@ const FileUpload = () => {
                         </div>
                     ))}
                 </div>
-                {/* <button
-          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={handleClick}
-        >
-          Add More
-        </button> */}
             </div>
         </div>
     );

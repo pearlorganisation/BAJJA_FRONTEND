@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import FileUpload from "../Drag_and_DropFiles/DragAndDropFiles";
 import axios from "axios";
+import { Base_Url } from "../../../API_Base_Url/Base_Url";
 
 const categories = [
   {
@@ -30,28 +31,44 @@ const categories = [
 ];
 
 const CreateAd = () => {
-  const [type, setType] = useState('');
-  const [servicesData, setServicesData] = useState([]);
-  const [categoryData, setCategoryData] = useState([]);
+  const [typeOfCategory, setTypeOfCategory] = useState('');
+  const [fetchedDategoryData, setFetchedCategoryData] = useState('');
+  const [category, setCategory] = useState('');
+  const [selectCategory, setSelectCategory] = useState('');
+  const [subCategory, setSubCategory] = useState('');
+  const [selectSubCategory, setSelectSubCategory] = useState('');
+  const [minPrice, setMinPrice] = useState(20);
+  const [maxPrice, setMaxPrice] = useState(1000);
 
-  const handleCategory_ServiceData = (res) => {
-    const category = res.filter((item) => item.type === "Goods");
-    const services = res.filter((item) => item.type === "Services");
-    setServicesData(services);
-    setCategoryData(category)
+  const handleCategory_ServiceData = (typeOfCategory) => {
+    const category = fetchedDategoryData && fetchedDategoryData.filter((item) => item.type === typeOfCategory);
+    setCategory(category);
+    console.log(category);
   }
 
   const fetchData = async () => {
     try {
       const res = await axios.get(`${Base_Url}/v1/categories`);
-      handleCategory_ServiceData(res.data.data);
+      setFetchedCategoryData(res.data.data);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     fetchData();
-  },[])
+  }, [])
+  useEffect(() => {
+    if (typeOfCategory) {
+      handleCategory_ServiceData(typeOfCategory);
+    }
+  }, [typeOfCategory])
+  useEffect(() => {
+    if (selectCategory) {
+      const subCategory = fetchedDategoryData && fetchedDategoryData.find(item => item._id === selectCategory)
+      setSubCategory(subCategory.sub_categories);
+      console.log(subCategory.sub_categories);
+    }
+  }, [selectCategory])
   return (
     <div>
       <main
@@ -64,7 +81,7 @@ const CreateAd = () => {
         <div className="max-w-[95%] w-full text-gray-600 border-2 p-8 bg-white border-gray-400 rounded-xl items-center">
           <div className="" data-aos="fade-up"
             data-aos-duration="500">
-            <h1 className="md:text-4xl text-lg font-bold">NEW POST</h1>
+            <h1 className="md:text-4xl text-lg font-bold">ADD NEW POST</h1>
           </div>
 
           <div className="mt-10" data-aos="fade-up"
@@ -90,14 +107,16 @@ const CreateAd = () => {
 
           <div className="mt-6" data-aos="fade-up"
             data-aos-duration="800">
-            <h1 className="md:text-2xl font-bold">User Role</h1>
+            <h1 className="md:text-2xl font-bold">TYPE OF CATEGORY</h1>
 
-            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              onChange={(e) => setTypeOfCategory(e.target.value)}
+            >
               <option disabled selected>
                 Choose Category Type
               </option>
-              <option>Goods</option>
-              <option>Services</option>
+              <option value="Goods">Goods</option>
+              <option value="Services">Services</option>
             </select>
           </div>
 
@@ -105,13 +124,15 @@ const CreateAd = () => {
             data-aos-duration="900">
             <h1 className="md:text-2xl font-bold ">CATEGORIES</h1>
 
-            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              onChange={(e) => setSelectCategory(e.target.value)}
+            >
               <option disabled selected>
                 Choose Category
               </option>
 
-              {categories.map((category) => (
-                <option key={category.id}>{category.name}</option>
+              {category && category.map((category, index) => (
+                <option key={index} value={category._id}>{category.name}</option>
               ))}
             </select>
           </div>
@@ -120,13 +141,15 @@ const CreateAd = () => {
             data-aos-duration="700">
             <h1 className="md:text-2xl font-bold">SUB CATEGORIES</h1>
 
-            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100">
+            <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              onChange={(e) => setSelectSubCategory(e.target.value)}
+            >
               <option disabled selected>
                 Choose Sub Category
               </option>
 
-              {categories.map((category) => (
-                <option key={category.id}>{category.name}</option>
+              {subCategory && subCategory.map((category, index) => (
+                <option key={index} value={category._id}>{category.name}</option>
               ))}
             </select>
           </div>
@@ -139,11 +162,19 @@ const CreateAd = () => {
               <input
                 type="number"
                 placeholder="Minimum Price..."
+                min={20}
+                value={minPrice}
+                max={1000}
+                onChange={(e) => setMinPrice(e.target.value)}
                 className="input input-bordered md:w-[40%] w-full shadow-xl border-2 border-gray-100"
               />
               <input
                 type="number"
                 placeholder="Maximum Price..."
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(e.target.value)}
+                min={minPrice}
+                max={1000}
                 className="input input-bordered md:w-[40%] w-full shadow-xl border-2 border-gray-100"
               />
             </div>
@@ -151,41 +182,6 @@ const CreateAd = () => {
             <div className="items-center justify-center w-full mt-6" data-aos="fade-up"
               data-aos-duration="900">
               <h1 className="font-bold md:text-2xl">Image Upload</h1>
-              {/* <label
-                htmlFor="dropzone-file"
-                className="flex flex-col mt-4 items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100 shadow-xl"
-              >
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg
-                    className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                    />
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                    <span className="font-semibold">Click to upload</span> or
-                    drag and drop
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    SVG, PNG, JPG or GIF (MAX. 800x400px)
-                  </p>
-                </div>
-                <input
-                  id="dropzone-file"
-                  type="file"
-                  multiple="true"
-                  className="hidden"
-                />
-              </label> */}
               <FileUpload />
             </div>
           </div>
