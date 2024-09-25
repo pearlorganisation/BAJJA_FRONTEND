@@ -49,7 +49,7 @@ const Header = () => {
       <header style={{ backgroundColor: `${bg}` }} className={`flex border-b py-4 sm:px-8 px-6 font-[sans-serif] min-h-[80px] tracking-wide relative z-50`}>
         <div className="flex items-center justify-between lg:gap-y-2 gap-0 w-full">
           <Link to="/">
-            <img className="w-20" src={logo} alt="logo" />
+            <img className="w-14" src={logo} alt="logo" />
           </Link>
           <div className="flex items-center justify-between lg:gap-0 md:gap-0 gap-2">
             <div
@@ -72,7 +72,7 @@ const Header = () => {
                   <NavLink
                     to="/"
                     className={({ isActive }) =>
-                      `text-[#333] hover:text-[#007bff] text-[15px] block ${isActive ? "font-bold text-blue-800" : "font-semibold"
+                      `text-[#333] hover:text-[#007bff] text-[13px] block ${isActive ? "font-bold text-blue-800" : "font-semibold"
                       }`
                     }
                   >
@@ -82,7 +82,7 @@ const Header = () => {
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <NavLink to="/categories"
                     className={({ isActive }) =>
-                      `text-[#333] hover:text-[#007bff] text-[15px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
+                      `text-[#333] hover:text-[#007bff] text-[13px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
                       }`
                     }
                   >
@@ -92,7 +92,7 @@ const Header = () => {
                 <li className="max-lg:border-b max-lg:py-3 px-3">
                   <NavLink to="/services"
                     className={({ isActive }) =>
-                      `text-[#333] hover:text-[#007bff] text-[15px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
+                      `text-[#333] hover:text-[#007bff] text-[13px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
                       }`
                     }
                   >
@@ -103,7 +103,7 @@ const Header = () => {
                   <NavLink to="/create-ad"
                     href="javascript:void(0)"
                     className={({ isActive }) =>
-                      `text-[#333] hover:text-[#007bff] text-[15px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
+                      `text-[#333] hover:text-[#007bff] text-[13px] block ${isActive ? "font-bold text-blue-500" : "font-semibold"
                       }`
                     }
                   >
@@ -126,7 +126,7 @@ const Header = () => {
                 <input
                   type="text"
                   placeholder="Search for products,services and more"
-                  className="w-80 h-10 text-sm bg-white outline-none pr-6 text-bold"
+                  className="w-80 h-7 text-sm bg-white outline-none pr-6 text-bold"
                 />
               </div>
             </div>
@@ -137,18 +137,18 @@ const Header = () => {
                 <span className="lg:hidden">
                   <Search />
                 </span>
-                <span className="relative cursor-pointer md:w-10 w-7" onClick={() => navigate(`${token ? "/userDetails" : "/auth"}`)}>
+                <span className="relative cursor-pointer md:w-7 w-7" onClick={() => navigate(`${token ? "/userDetails" : "/auth"}`)}>
                   <img src={Profile} className="w-full" />
                 </span>
 
-                <span className="relative cursor-pointer md:w-10 w-7">
+                <span className="relative cursor-pointer md:w-7 w-7">
                   <img src={Fav} className="w-full" />
                   <span className="absolute left-auto md:ml-7 ml-5 top-[-3px] rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     {selector.favourite.length}
                   </span>
                 </span>
 
-                <span className="relative cursor-pointer md:w-10 w-7" onClick={() => navigate("/addToCart")}>
+                <span className="relative cursor-pointer md:w-7 w-7" onClick={() => navigate("/addToCart")}>
                   <img src={Cart} className="w-full" />
                   <span className="absolute left-auto md:ml-8 ml-5 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     {selector.addToCart.length}

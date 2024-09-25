@@ -68,18 +68,18 @@ const Navbar = () => {
 
   return (
     <div className="m-2 mx-10 flex items-center justify-between overflow-x-auto pb-2 custom-scrollbar">
-      <div className="flex items-center justify-between space-x-8">
+      <div className="flex items-center justify-between space-x-2">
         <div className="flex flex-nowrap">
 
           {/* Categroies */}
 
-          <div className="inline-flex w-48"
+          <div className="inline-flex w-40"
             onMouseLeave={toggleAllCategoryDropdown}
           >
             <button
               id="hs-dropdown-with-dividers"
               type="button"
-              className={`py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 ${isCategory ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
+              className={`py-1 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-gray-200 ${isCategory ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
               aria-haspopup="menu"
               aria-expanded={isCategory}
               aria-label="Dropdown"
@@ -187,13 +187,13 @@ const Navbar = () => {
 
           {/* Services */}
 
-          <div className=" inline-flex ml-2 w-48"
+          <div className=" inline-flex ml-2 w-40"
             onMouseLeave={toggleAllServicesDropdown}
           >
             <button
               id="hs-dropdown-with-dividers"
               type="button"
-              className={`py-3 px-8 inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-gray-200 ${isServies ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
+              className={`py-1 px-3 inline-flex items-center gap-x-1 text-sm font-semibold rounded-lg border border-gray-200 ${isServies ? 'bg-orange-500 text-white' : 'bg-white text-gray-800'} shadow-sm focus:outline-none focus:bg-orange-600 focus:bg-gray-200 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700 tracking-wide`}
               aria-haspopup="menu"
               aria-expanded={isServies}
               aria-label="Dropdown"
@@ -295,33 +295,33 @@ const Navbar = () => {
         <div className="inline-flex flex-row gap-2">
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[10rem]">
             <img src={Location} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Location</p>
+            <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100">Track Location</p>
           </div>
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
             <img src={Location} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100">Track Order</p>
+            <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100">Track Order</p>
           </div>
 
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
             <img src={Compare} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 ">Compare</p>
+            <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100 ">Compare</p>
           </div>
 
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Support} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 w-[10rem]">Customer Support</p>
+            <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100 w-[8rem]">Customer Support</p>
           </div>
 
           <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer">
             <img src={Info} alt="location" />
-            <p className="hover:border-b-2 border-transparent border-gray-500 transition-all duration-100 w-[10rem]">Need Help</p>
+            <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100 w-[7rem]">Need Help</p>
           </div>
 
         </div>
       </div>
-      <div className="flex  gap-2  mt-2 items-center justify-self-end lg:w-auto w-[10rem]">
+      <div className="flex gap-2 text-sm  mt-2 items-center justify-self-end">
         <img src={Call} alt="location" />
-        <p>+1-202-555-0104</p>
+        <p className="w-[9rem]">+1-202-555-0104</p>
       </div>
     </div>
   );

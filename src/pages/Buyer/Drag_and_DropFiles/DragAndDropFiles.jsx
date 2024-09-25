@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 
-const FileUpload = () => {
+const FileUpload = ({ setPhotos }) => {
     const [files, setFiles] = useState([]);
+    const maxFiles = 4; // Set the maximum number of images allowed
 
     const handleFiles = (newFiles) => {
-        setFiles((prevFiles) => [...prevFiles, ...Array.from(newFiles)]);
+        const totalFiles = files.length + newFiles.length;
+
+        if (totalFiles > maxFiles) {
+            alert(`You can only upload up to ${maxFiles} images.`);
+            return;
+        }
+
+        const fileArray = Array.from(newFiles).map(file => ({
+            file,
+            preview: URL.createObjectURL(file), // Store the file's preview URL
+        }));
+
+        setFiles((prevFiles) => [...prevFiles, ...fileArray]);
+        setPhotos((prevFiles) => [...prevFiles, ...fileArray.map(item => item.file)]);
     };
 
     const handleDrop = (e) => {
@@ -14,12 +28,17 @@ const FileUpload = () => {
     };
 
     const handleClick = () => {
-        document.getElementById('fileInput').click();
+        if (files.length < maxFiles) {
+            document.getElementById('fileInput').click();
+        }
     };
-    const handleImageCancel = (file) => {
-        const newArrayFile = files.filter((item) => item.lastModified != file.lastModified);
+
+    const handleImageCancel = (fileToRemove) => {
+        const newArrayFile = files.filter((item) => item.file !== fileToRemove);
         setFiles(newArrayFile);
-    }
+        setPhotos(newArrayFile.map(item => item.file));
+    };
+
     return (
         <div className="mx-auto mt-10">
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center text-center">
@@ -33,26 +52,26 @@ const FileUpload = () => {
                 />
                 <div
                     id="dropZone"
-                    className="cursor-pointer p-4 w-full h-40 flex items-center justify-center bg-gray-100 hover:bg-gray-200"
+                    className={`cursor-pointer p-4 w-full h-40 flex items-center justify-center ${files.length >= maxFiles ? 'bg-gray-200 cursor-not-allowed' : 'bg-gray-100 hover:bg-gray-200'}`}
                     onClick={handleClick}
                     onDragOver={(e) => e.preventDefault()}
                     onDrop={handleDrop}
                 >
-                    <p className="text-gray-500">
-                        Drag & drop images here or{' '}
-                        <span className="text-blue-500">click to select</span>
+                    <p className={`text-gray-500 ${files.length >= maxFiles ? 'text-gray-400' : ''}`}>
+                        {files.length >= maxFiles ? "Maximum images reached" : "Drag & drop images here or click to select"}
                     </p>
                 </div>
                 <div id="fileList" className="mt-4 flex flex-wrap justify-start w-full gap-5">
-                    {files.map((file, index) => (
+                    {files.map((item, index) => (
                         <div key={index} className="mt-2 relative">
                             <img
-                                src={URL.createObjectURL(file)}
-                                alt={file.name}
+                                src={item.preview}
+                                alt={item.file.name}
                                 className="md:w-28 md:h-28 w-14 h-14 object-cover rounded"
                             />
-                            <button className='absolute top-0 right-0 mt-[-0.5rem] mr-[-0.5rem] bg-green-600 rounded-full p-1'
-                                onClick={() => handleImageCancel(file)}
+                            <button
+                                className='absolute top-0 right-0 mt-[-0.5rem] mr-[-0.5rem] bg-green-600 rounded-full p-1'
+                                onClick={() => handleImageCancel(item.file)}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -73,6 +92,9 @@ const FileUpload = () => {
                     ))}
                 </div>
             </div>
+            <p className="mt-2 text-sm text-gray-500">
+                {files.length}/{maxFiles} images uploaded.
+            </p>
         </div>
     );
 };
