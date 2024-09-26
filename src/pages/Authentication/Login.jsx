@@ -118,19 +118,22 @@ const Login = () => {
                 </button>
               </div>
             </form>
-
-
-            <div className="flex items-center justify-center" data-aos="fade-up"
-              data-aos-duration="1000">
-              <p className="mt-6 text-sm">Sign up with Facebook or Google ?</p>
+            <div className="text-center my-2">
+              <p>Or</p>
             </div>
 
-            <div className="flex items-center justify-center" data-aos="fade-up"
+            <div className="flex items-center justify-center bg-red-500" data-aos="fade-up"
+              data-aos-duration="1000">
+              <p className="mt-6 text-sm">Sign up with Goggle</p>
+              <img className="w-10" src="https://cdn1.iconfinder.com/data/icons/google-s-logo/150/Google_Icons-09-512.png" alt="google" />
+            </div>
+
+            {/* <div className="flex items-center justify-center" data-aos="fade-up"
               data-aos-duration="1000">
               <p className="mt-1">
                 <span className="text-green-600 text-sm"> Create Password</span>
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>

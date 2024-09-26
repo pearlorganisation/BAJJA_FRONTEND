@@ -15,6 +15,7 @@ import HomePage_Categories_Services_Goods from "../pages/HomePage_Categories_Ser
 import ProtectedRoute from "./ProtechtedRoute/ProtectedRoute";
 import UserDetails from "../pages/Authentication/UserDetails/UserDetails";
 import CreateNewPassword from "../pages/Authentication/UserDetails/CreateNewPassword";
+import GetPost from "../pages/GetOurPost/GetPost";
 
 
 const routes = createBrowserRouter([
@@ -50,7 +51,7 @@ const routes = createBrowserRouter([
         path: ":type/:servicename/:subtitle",
         element: <ProductListing />,
       },
-      
+
       {
         path: "addToCart",
         element: (
@@ -58,6 +59,10 @@ const routes = createBrowserRouter([
             <AddToCart />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: "/user-post",
+        element: <GetPost />
       }
     ],
   },
@@ -70,8 +75,8 @@ const routes = createBrowserRouter([
     element: <UserDetails />,
   },
   {
-    path:"/create-new-password",
-    element:<CreateNewPassword/>
+    path: "/create-new-password",
+    element: <CreateNewPassword />
   },
   {
     path: "/register",
@@ -90,9 +95,14 @@ const routes = createBrowserRouter([
     element: <CreateAd />,
   },
   {
+    path: "/create-ad/:id",
+    element: <CreateAd />,
+  },
+  {
     path: "/prod-cat",
     element: <ProductCategorySection />,
   },
+
 ]);
 
 export default routes;

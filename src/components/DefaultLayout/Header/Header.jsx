@@ -143,14 +143,14 @@ const Header = () => {
 
                 <span className="relative cursor-pointer md:w-7 w-7">
                   <img src={Fav} className="w-full" />
-                  <span className="absolute left-auto md:ml-7 ml-5 top-[-3px] rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                  <span className="absolute left-auto md:ml-5 ml-5 top-[-3px] rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     {selector.favourite.length}
                   </span>
                 </span>
 
                 <span className="relative cursor-pointer md:w-7 w-7" onClick={() => navigate("/addToCart")}>
                   <img src={Cart} className="w-full" />
-                  <span className="absolute left-auto md:ml-8 ml-5 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
+                  <span className="absolute left-auto md:ml-5 ml-5 top-0 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
                     {selector.addToCart.length}
                   </span>
                 </span>

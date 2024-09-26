@@ -3,9 +3,12 @@ import FileUpload from "../Drag_and_DropFiles/DragAndDropFiles";
 import axios from "axios";
 import { Base_Url } from "../../../API_Base_Url/Base_Url";
 import Loading from "../../../components/LoadingData/Loading";
+import { useParams } from "react-router";
 
 
 const CreateAd = () => {
+  const { id } = useParams();
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -32,6 +35,29 @@ const CreateAd = () => {
     const category = fetchedDategoryData && fetchedDategoryData.filter((item) => item.type === typeOfCategory);
     setCategory(category);
   }
+
+  const getPost = async () => {
+    try {
+      if (token) {
+        const res = await axios.get(`${Base_Url}/v1/product-posts/${id && id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+
+        setTitle(res.data.data.product_name);
+        setDescription(res.data.data.description);
+        setTypeOfCategory(res.data.data.type);
+        setSelectCategory(res.data.data.category);
+        setSelectSubCategory(res.data.data.sub_category);
+        setMinPrice(res.data.data.minprice);
+        setMaxPrice(res.data.data.maxprice);
+        setPhotos(res.data.data.photos);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const fetchData = async () => {
     try {
@@ -82,12 +108,17 @@ const CreateAd = () => {
 
   useEffect(() => {
     fetchData();
-  }, [])
+    if (id) {
+      getPost();
+    }
+  }, [id])
+
   useEffect(() => {
     if (typeOfCategory) {
       handleCategory_ServiceData(typeOfCategory);
     }
   }, [typeOfCategory])
+
   useEffect(() => {
     if (selectCategory) {
       const subCategory = fetchedDategoryData && fetchedDategoryData.find(item => item.name === selectCategory)
@@ -142,6 +173,7 @@ const CreateAd = () => {
             <h1 className="md:text-xl font-bold">TYPE OF CATEGORY</h1>
 
             <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              value={typeOfCategory}
               onChange={(e) => {
                 setCategory('');
                 setTypeOfCategory(e.target.value);
@@ -160,6 +192,7 @@ const CreateAd = () => {
             <h1 className="md:text-xl font-bold ">CATEGORIES</h1>
 
             <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              value={selectCategory}
               onChange={(e) => setSelectCategory(e.target.value)}
             >
               <option disabled selected>
@@ -177,6 +210,7 @@ const CreateAd = () => {
             <h1 className="md:text-xl font-bold">SUB CATEGORIES</h1>
 
             <select className="select select-ghost w-full mt-3 shadow-xl border-2 border-gray-100"
+              value={selectSubCategory}
               onChange={(e) => setSelectSubCategory(e.target.value)}
             >
               <option disabled selected>
@@ -217,14 +251,15 @@ const CreateAd = () => {
             <div className="items-center justify-center w-full mt-6" data-aos="fade-up"
               data-aos-duration="900">
               <h1 className="font-bold md:text-2xl">Image Upload</h1>
-              <FileUpload setPhotos={setPhotos} />
+              <FileUpload setPhotos={setPhotos} photos={photos} />
             </div>
           </div>
 
           <div className="flex items-center flex-col mt-6" data-aos="fade-up"
             data-aos-duration="500">
+
             <button className="w-[40%] px-4 py-2 text-white font-medium bg-black hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150">
-              Upload
+              {id ? "Update" : "Upload"}
             </button>
           </div>
         </form>

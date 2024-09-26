@@ -104,7 +104,7 @@ const Navbar = () => {
             </button>
             {/* Categories DropDown */}
             <div
-              className={`transition-[opacity,margin] duration-300 ${isCategory ? 'opacity-100' : 'opacity-0'} ${isCategory ? 'block' : 'hidden'} absolute z-10 min-w-60 h-[70vh] bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 category_ScrollBar overflow-y-auto`}
+              className={`transition-[opacity,margin] duration-300 ${isCategory ? 'opacity-100' : 'opacity-0'} ${isCategory ? 'block' : 'hidden'} absolute z-10 min-w-60 h-[70vh] bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-8 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700 category_ScrollBar overflow-y-auto`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -162,7 +162,7 @@ const Navbar = () => {
             {/* Sub Categories DorpDown */}
 
             <div
-              className={`sm:ml-56 h-[70vh] ml-[-2rem] category_ScrollBar overflow-y-auto transition-[opacity,margin] duration-300 ${isSubCategories.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubCategories.length > 0 ? 'block' : 'hidden'} absolute z-10 sm:min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`sm:ml-56 h-[70vh] ml-[-2rem] category_ScrollBar overflow-y-auto transition-[opacity,margin] duration-300 ${isSubCategories.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubCategories.length > 0 ? 'block' : 'hidden'} absolute z-10 sm:min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-8 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -221,7 +221,7 @@ const Navbar = () => {
             {/* Services DropDown */}
 
             <div
-              className={`ml-[-13rem] h-[48vh] category_ScrollBar overflow-y-auto sm:ml-0 transition-[opacity,margin] duration-300 ${isServies ? 'opacity-100' : 'opacity-0'} ${isServies ? 'block' : 'hidden'} absolute z-10 min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-12 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`ml-[-13rem] h-[48vh] category_ScrollBar overflow-y-auto sm:ml-0 transition-[opacity,margin] duration-300 ${isServies ? 'opacity-100' : 'opacity-0'} ${isServies ? 'block' : 'hidden'} absolute z-10 min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-8 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -269,7 +269,7 @@ const Navbar = () => {
             {/* Sub Services Dropdown */}
 
             <div
-              className={`sm:ml-64 ml-[-2rem] h-[47vh] category_ScrollBar overflow-y-auto transition-[opacity,margin] duration-300 ${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubServices.length > 0 ? 'block' : 'hidden'} absolute z-10 sm:min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-14 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
+              className={`sm:ml-64 ml-[-2rem] h-[47vh] category_ScrollBar overflow-y-auto transition-[opacity,margin] duration-300 ${isSubServices.length > 0 ? 'opacity-100' : 'opacity-0'} ${isSubServices.length > 0 ? 'block' : 'hidden'} absolute z-10 sm:min-w-64 bg-white shadow-md rounded-lg p-1 space-y-0.5 mt-8 divide-y divide-gray-200 dark:bg-neutral-800 dark:border dark:border-neutral-700 dark:divide-neutral-700`}
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="hs-dropdown-with-dividers"
@@ -293,16 +293,16 @@ const Navbar = () => {
           </div>
         </div>
         <div className="inline-flex flex-row gap-2">
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[10rem]">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8.1rem]">
             <img src={Location} alt="location" />
             <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100">Track Location</p>
           </div>
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[7rem]">
             <img src={Location} alt="location" />
             <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100">Track Order</p>
           </div>
 
-          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[8rem]">
+          <div className="flex gap-2 ml-2 mt-2 items-center justify-center cursor-pointer w-[7rem]">
             <img src={Compare} alt="location" />
             <p className="hover:border-b-2 text-sm border-transparent border-gray-500 transition-all duration-100 ">Compare</p>
           </div>
@@ -321,7 +321,7 @@ const Navbar = () => {
       </div>
       <div className="flex gap-2 text-sm  mt-2 items-center justify-self-end">
         <img src={Call} alt="location" />
-        <p className="w-[9rem]">+1-202-555-0104</p>
+        <p className="w-[9.5rem]">+1-202-555-0104</p>
       </div>
     </div>
   );

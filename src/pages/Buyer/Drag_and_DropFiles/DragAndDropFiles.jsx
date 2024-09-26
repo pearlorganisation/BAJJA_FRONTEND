@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const FileUpload = ({ setPhotos }) => {
+const FileUpload = ({ setPhotos, photos }) => {
     const [files, setFiles] = useState([]);
-    const maxFiles = 4; // Set the maximum number of images allowed
+    console.log(photos);
+
+    const maxFiles = 4;
 
     const handleFiles = (newFiles) => {
         const totalFiles = files.length + newFiles.length;
@@ -14,13 +16,22 @@ const FileUpload = ({ setPhotos }) => {
 
         const fileArray = Array.from(newFiles).map(file => ({
             file,
-            preview: URL.createObjectURL(file), // Store the file's preview URL
+            preview: URL.createObjectURL(file),
         }));
 
         setFiles((prevFiles) => [...prevFiles, ...fileArray]);
         setPhotos((prevFiles) => [...prevFiles, ...fileArray.map(item => item.file)]);
     };
-
+    useEffect(() => {
+        if (photos.length > 0) {
+            const initialFiles = photos.map((photo) => ({
+                file: { name: photo.public_id }, // Simulating the file object with a name property
+                preview: photo.secure_url,
+                isUploaded: true, // This flag helps differentiate between uploaded and new images
+            }));
+            setFiles(initialFiles);
+        }
+    }, [photos]);
     const handleDrop = (e) => {
         e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
